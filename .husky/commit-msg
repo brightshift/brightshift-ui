@@ -1,0 +1,4 @@
+# .husky/commit-msg
+echo "Commit message file path: $1"
+
+npx --no -- commitlint --edit $1
