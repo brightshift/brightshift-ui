@@ -13,19 +13,19 @@ export default function IndexPage() {
 
   const { getToken } = useAuth()
 
-  useEffect(() => {
-    const authenticatedFetch = async () => {
-      return fetch("http://127.0.0.1:8000/api/private/cats", {
-        headers: { Authorization: `Bearer ${await getToken()}` },
-      }).then((res) => res.json())
-    }
+  const authenticatedFetch = async () => {
+    return fetch("http://127.0.0.1:8000/api/private/cats", {
+      headers: { Authorization: `Bearer ${await getToken()}` },
+    }).then((res) => res.json())
+  }
 
+  useEffect(() => {
     if (isSignedIn) {
       authenticatedFetch()
         .then((data) => console.log(data))
         .catch((err) => console.log(err))
     }
-  }, [getToken, isSignedIn])
+  }, [isSignedIn])
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
