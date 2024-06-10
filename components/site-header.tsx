@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+
 import HamMenu from "./hamMenu"
 
 export function SiteHeader() {
@@ -14,9 +15,15 @@ export function SiteHeader() {
         <MainNav items={siteConfig.mainNav} />
         <div className="hidden flex-1 items-center justify-end md:flex">
           <ul className="flex items-center space-x-5 text-gray-500">
-            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">Home</b>
-            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">About</b>
-            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">Contact</b>
+            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">
+              Home
+            </b>
+            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">
+              About
+            </b>
+            <b className="cursor-pointer hover:animate-pulse hover:text-black dark:hover:text-white">
+              Contact
+            </b>
           </ul>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">
