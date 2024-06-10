@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 300, 100%, 0%;
+    /* --background: 0 0% 100%; */
     --foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -76,6 +77,33 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
+
+@layer components {
+  .silver-text {
+    @apply bg-[linear-gradient(rgb(255,255,255)_0%,rgba(255,255,255,0.5)_100%)]  text-transparent    bg-clip-text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero_animation {
+    @apply opacity-100;
+    transform: perspective(1200px) translateX(0px) translateY(-80px)
+      scale(0.85443) rotate(0deg) rotateX(4.85232deg) rotateY(0deg) skewX(0deg)
+      skewY(0deg) translateZ(0px);
+  }
+  .hero_main {
+    @apply shadow-[0_-110px_132px_#ffffff26] flex-none min-h-80 left-0  fixed -right-0 z-10 rounded-[100%] top-3/4;
+
+    background: linear-gradient(
+      180.00106681960753deg,
+      #ffffff -55.00000000000001%,
+      rgba(0, 0, 0, 0) 65%
+    );
+    transform: perspective(1200px);
+  }
+}
+
