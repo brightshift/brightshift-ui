@@ -1,8 +1,12 @@
-import { Inter_Tight } from "next/font/google"
+import { Inter_Tight } from "next/font/google";
+
+
+
+
 
 interface Props extends React.ComponentProps<"div"> {}
 
-const inter_tight = Inter_Tight({ subsets: ["latin"], variable: "--font-sans" })
+const inter_tight = Inter_Tight({ subsets: ["latin"] })
 
 export const Hero = ({ ...props }: Props) => {
   return (
@@ -18,7 +22,8 @@ export const Hero = ({ ...props }: Props) => {
         your enthusiasm, and offer growth potential, such as data scientist, UX
         designer, or sustainability consultant.
       </p>
-      <div className="hero_main  hero_animation"></div>
+      {/* <div className="hero_main  half-circle-gradient"></div> */}
+      <div className="half-circle-gradient absolute -right-0 left-0 top-3/4  z-10 min-h-72 flex-none   shadow-[0_-110px_132px_#ffffff26] "></div>
     </div>
   )
 }

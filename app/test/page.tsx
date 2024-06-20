@@ -1,9 +1,9 @@
-import { Hero } from "../_Home"
+import { OnBoarding } from "@/components/onBoarding"
 
 export default async function TestPage() {
   return (
     <>
-      <Hero />
+      <OnBoarding />
     </>
   )
 }
