@@ -1,8 +1,4 @@
-import { Inter_Tight } from "next/font/google";
-
-
-
-
+import { Inter_Tight } from "next/font/google"
 
 interface Props extends React.ComponentProps<"div"> {}
 

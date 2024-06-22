@@ -12,7 +12,10 @@ export const Onboarding_Step3 = ({ ...props }: Props) => {
           dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <div className="onboarding-right   "></div>
+      <div
+        className="onboarding-right "
+        style={{ boxShadow: `0px 0px 10rem 2rem rgba(109, 35, 182, 0.3)` }}
+      ></div>
     </div>
   )
 }

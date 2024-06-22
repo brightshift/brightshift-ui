@@ -126,8 +126,13 @@
   }
 
   .body-gradient {
-    background: linear-gradient(135deg, #030711 75%, #3b0f1c 80%, #2c0e0e 85%, #30170e 90%);
-
+    background: linear-gradient(
+      135deg,
+      #030711 75%,
+      #3b0f1c 80%,
+      #2c0e0e 85%,
+      #30170e 90%
+    );
   }
 
   .onboarding-container {
