@@ -14,7 +14,7 @@ export const Onboarding_Step3 = ({ ...props }: Props) => {
       </div>
       <div
         className="onboarding-right "
-        style={{ boxShadow: `0px 0px 10rem 2rem rgba(109, 35, 182, 0.3)` }}
+        style={{ boxShadow: `0px 0px 20rem 2rem rgba(109, 35, 182, 0.2)` }}
       ></div>
     </div>
   )

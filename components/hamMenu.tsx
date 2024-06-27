@@ -1,16 +1,12 @@
-import React from "react"
+interface Props extends React.ComponentPropsWithoutRef<"button"> {}
 
-const HamMenu = () => {
+const HamMenu = ({ ...props }: Props) => {
   return (
-    <div>
-      <button className="group space-y-1 md:hidden">
-        <div className="h-0.5 w-6 bg-white"></div>
-        <div className="h-0.5 w-6 bg-white"></div>
-        <div className="h-0.5 w-6 bg-white"></div>
-
-        {/* menu */}
-      </button>
-    </div>
+    <button className="group space-y-1 md:hidden" {...props}>
+      <div className="h-0.5 w-6 bg-white"></div>
+      <div className="h-0.5 w-6 bg-white"></div>
+      <div className="h-0.5 w-6 bg-white"></div>
+    </button>
   )
 }
 
