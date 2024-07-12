@@ -2,16 +2,16 @@
 
 import "@/styles/globals.css"
 
-import { ClerkProvider } from "@clerk/nextjs"
 import { Metadata } from "next"
+import { ClerkProvider } from "@clerk/nextjs"
 
+import { siteConfig } from "@/config/site"
+import { fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
 import { SiteNave } from "@/components/siteNave"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 
 // export const metadata: Metadata = {
 //   title: {
