@@ -3,10 +3,20 @@
 import React, { useState } from "react"
 
 import { BoardingFloatingBar } from "./BoardingFloatingBar"
-import { Onboarding_Step2, Onboarding_Step3, Welcome_Step , Onboarding_Step4 } from "./steps"
+import {
+  Onboarding_Step2,
+  Onboarding_Step3,
+  Onboarding_Step4,
+  Welcome_Step,
+} from "./steps"
 
 interface Props extends React.ComponentProps<"div"> {}
-const Arrangement = [Welcome_Step, Onboarding_Step2, Onboarding_Step3, Onboarding_Step4]
+const Arrangement = [
+  Welcome_Step,
+  Onboarding_Step2,
+  Onboarding_Step3,
+  Onboarding_Step4,
+]
 
 export const OnBoarding = ({ ...props }: Props) => {
   const [stepNum, setStepNum] = useState(0)
