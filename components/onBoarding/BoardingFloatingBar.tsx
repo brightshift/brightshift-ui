@@ -37,9 +37,7 @@ export const BoardingFloatingBar = ({
         >
           <ChevronLeft />
         </button>
-        <div
-          className={`mx-auto flex h-full grow justify-center gap-x-4 px-1`}
-        >
+        <div className={`mx-auto flex h-full grow justify-center gap-x-4 px-1`}>
           {Array.from({ length: totalSteps }).map((_, index) => (
             <button
               onClick={() => setStepNum(index)}
