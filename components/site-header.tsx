@@ -11,7 +11,7 @@ import HamMenu from "./hamMenu"
 export function SiteHeader() {
   return (
     <header className="sticky top-0 mt-5 w-full px-20">
-      <div className="container flex h-16 items-center space-x-4 rounded-3xl shadow shadow-black dark:shadow-white sm:justify-between sm:space-x-0">
+      <div className="container flex h-16 items-center space-x-4 rounded-3xl  shadow shadow-black dark:shadow-white sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="hidden flex-1 items-center justify-end md:flex">
           <ul className="flex items-center space-x-5 text-gray-500">

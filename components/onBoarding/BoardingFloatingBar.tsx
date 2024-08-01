@@ -28,7 +28,7 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className=" fixed bottom-4 z-50 flex w-full items-center justify-center "
+      className="fixed bottom-4 flex w-full items-center justify-center "
     >
       <div className="glassmorphism left-0 mx-auto flex min-h-10 w-11/12 items-center justify-between px-4">
         <button
@@ -38,14 +38,14 @@ export const BoardingFloatingBar = ({
           <ChevronLeft />
         </button>
         <div
-          className={`mx-auto  flex h-full grow   justify-center gap-x-4 px-1`}
+          className={`mx-auto flex h-full grow justify-center gap-x-4 px-1`}
         >
           {Array.from({ length: totalSteps }).map((_, index) => (
             <button
               onClick={() => setStepNum(index)}
               key={index}
               className={cn(
-                "h-full min-h-2 w-7 rounded-md  bg-zinc-800  transition-all sm:w-10",
+                "h-full min-h-2 w-7 rounded-md bg-zinc-800 transition-all sm:w-10",
                 { "bg-zinc-300": stepNum === index }
               )}
             />
