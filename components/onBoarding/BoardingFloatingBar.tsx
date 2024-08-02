@@ -28,7 +28,7 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="fixed bottom-4 flex w-full items-center justify-center "
+      className="fixed bottom-1 flex w-full items-center justify-center"
     >
       <div className="glassmorphism left-0 mx-auto flex min-h-10 w-11/12 items-center justify-between px-4">
         <button

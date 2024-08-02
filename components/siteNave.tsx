@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 
 import { Icons } from "./icons"
 import { MainNav } from "./main-nav"
-import { ThemeToggle } from "./theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { buttonVariants } from "./ui/button"
 
 interface Props extends React.ComponentProps<"header"> {}
