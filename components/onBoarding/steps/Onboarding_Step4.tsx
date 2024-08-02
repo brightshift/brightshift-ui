@@ -36,7 +36,10 @@ interface Props extends React.ComponentProps<"div"> {}
 
 export const Onboarding_Step4 = ({ ...props }: Props) => {
   return (
-    <div {...props} className="flex min-h-[80vh] w-full animate-fade-in flex-col items-center justify-center gap-y-10 px-4 py-10">
+    <div
+      {...props}
+      className="flex min-h-[80vh] w-full animate-fade-in flex-col items-center justify-center gap-y-10 px-4 py-10"
+    >
       <div className="w-full items-start justify-start md:text-center">
         <h1 className="text-2xl font-bold">Stay in touch</h1>
         <p className="font-serif text-xl font-medium">
