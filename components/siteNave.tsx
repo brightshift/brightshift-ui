@@ -49,7 +49,7 @@ export const SiteNave = ({ ...props }: Props) => {
             <Link
               key={index}
               href={item.href}
-              className="cursor-pointer font-bold hover:animate-pulse "
+              className="cursor-pointer font-bold text-white hover:animate-pulse "
             >
               {item.name}
             </Link>

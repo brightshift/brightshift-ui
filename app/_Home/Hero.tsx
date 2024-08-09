@@ -1,4 +1,7 @@
 import { Inter_Tight } from "next/font/google"
+import Link from "next/link"
+
+import { buttonVariants } from "@/components/ui/button"
 
 interface Props extends React.ComponentProps<"div"> {}
 
@@ -12,7 +15,7 @@ export const Hero = ({ ...props }: Props) => {
       >
         find the best job for you.
       </h1>
-      <p className="mx-auto my-4  max-w-2xl     text-center md:text-xl ">
+      <p className="mx-auto my-4  max-w-2xl     text-center text-white md:text-xl">
         Finding the best job involves aligning your skills, passions, and values
         with opportunities. Consider roles that leverage your strengths, ignite
         your enthusiasm, and offer growth potential, such as data scientist, UX
