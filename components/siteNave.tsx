@@ -49,7 +49,7 @@ export const SiteNave = ({ ...props }: Props) => {
             <Link
               key={index}
               href={item.href}
-              className="cursor-pointer font-bold text-white hover:animate-pulse "
+              className="cursor-pointer font-bold text-black hover:animate-pulse dark:text-white "
             >
               {item.name}
             </Link>
@@ -69,7 +69,7 @@ export const SiteNave = ({ ...props }: Props) => {
                   variant: "ghost",
                 })}
               >
-                <Icons.gitHub className="size-5" />
+                <Icons.gitHub className="size-5 fill-current text-black dark:text-white" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
@@ -84,7 +84,7 @@ export const SiteNave = ({ ...props }: Props) => {
                   variant: "ghost",
                 })}
               >
-                <Icons.facebook className="size-5 fill-current" />
+                <Icons.facebook className="size-5 fill-current text-black dark:text-white" />
                 <span className="sr-only">Facebook</span>
               </div>
             </Link>

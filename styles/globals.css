@@ -85,7 +85,12 @@
 
 @layer components {
   .silver-text {
-    @apply bg-[linear-gradient(rgb(255,255,255)_0%,rgba(255,255,255,0.5)_100%)]  text-transparent    bg-clip-text;
+    @apply bg-[linear-gradient(rgb(255,255,255)_0%,rgba(255,255,255,0.5)_100%)] text-transparent bg-clip-text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lightSilver-text {
+    @apply bg-[linear-gradient(rgb(0,0,0)_0%,rgba(0,0,0,0.5)_100%)] text-transparent bg-clip-text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -119,7 +124,18 @@
       circle at 50% 50%,
       rgba(255, 255, 255, 0.8) 0%,
       rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0.2) 75%,
+      rgba(255, 255, 255, 0.1) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    clip-path: ellipse(60% 60% at 50% 70%);
+  }
+
+  .lightHalf-circle-gradient {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.2) 75%,
       rgba(0, 0, 0, 0) 100%
     );
     clip-path: ellipse(60% 60% at 50% 70%);
