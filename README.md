@@ -1,1 +1,2 @@
-README.md
+Preview link: 
+https://brightshift.github.io/brightshift-ui/
