@@ -28,14 +28,14 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="fixed bottom-1 flex w-full items-center justify-center"
+      className="container fixed bottom-1  left-1/2  mx-auto flex w-full -translate-x-1/2 items-center justify-center lg:bottom-2 2xl:bottom-3"
     >
-      <div className="glassmorphism left-0 mx-auto flex min-h-10 w-11/12 items-center justify-between px-4">
+      <div className=" glassmorphism left-0 mx-auto flex min-h-10  w-11/12 items-center justify-between px-4  xl:py-4 ">
         <button
           onClick={decrement}
           className={cn({ "opacity-30": stepNum === 0 })}
         >
-          <ChevronLeft />
+          <ChevronLeft className="2xl:size-10" />
         </button>
         <div className={`mx-auto flex h-full grow justify-center gap-x-4 px-1`}>
           {Array.from({ length: totalSteps }).map((_, index) => (
@@ -44,6 +44,7 @@ export const BoardingFloatingBar = ({
               key={index}
               className={cn(
                 "h-full min-h-2 w-7 rounded-md bg-zinc-800 transition-all sm:w-10",
+                "xl:min-h-3 xl:w-10  2xl:min-h-4   2xl:w-20",
                 { "bg-zinc-300": stepNum === index }
               )}
             />
@@ -53,7 +54,7 @@ export const BoardingFloatingBar = ({
           onClick={increment}
           className={cn({ "opacity-30": stepNum === totalSteps - 1 })}
         >
-          <ChevronRight />
+          <ChevronRight className="2xl:size-10" />
         </button>
       </div>
     </div>

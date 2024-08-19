@@ -141,14 +141,14 @@
   .onboarding-left {
     @apply w-full  md:w-1/3;
     h1 {
-      @apply text-2xl  font-bold;
+      @apply text-2xl xl:text-4xl  font-bold 2xl:text-6xl;
     }
     p {
-      @apply text-xl font-medium font-serif;
+      @apply text-xl font-medium font-serif xl:text-2xl 2xl:text-3xl;
     }
   }
 
   .onboarding-right {
-    @apply md:w-[20rem] md:min-h-52 w-full h-full bg-slate-500 min-h-80 rounded-lg;
+    @apply md:w-[20rem] xl:w-[30rem]  2xl:w-[35rem]  xl:min-h-72  2xl:min-h-96  md:min-h-52 w-full h-full bg-slate-500 min-h-80 rounded-lg;
   }
 }

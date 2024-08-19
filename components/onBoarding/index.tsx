@@ -22,7 +22,7 @@ export const OnBoarding = ({ ...props }: Props) => {
   const [stepNum, setStepNum] = useState(0)
 
   return (
-    <div {...props} className="min-h-screen">
+    <div {...props} className=" p-2 text-zinc-900 dark:text-white">
       {Arrangement.map((Item, index) => (
         <React.Fragment key={index}>
           {index === stepNum && <Item />}
