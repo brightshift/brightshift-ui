@@ -36,7 +36,7 @@ export const SiteNave = ({ ...props }: Props) => {
     <header
       {...props}
       className={cn(
-        "glassmorphism sticky top-5 z-50 mx-auto flex w-11/12 max-w-[1204px] rounded-xl bg-transparent p-4 shadow shadow-black transition-all dark:shadow-white ",
+        "glassmorphism dark:dark-bg sticky top-4 z-50 mx-auto flex w-11/12 max-w-[1204px] rounded-2xl bg-transparent p-4 shadow shadow-black transition-all dark:shadow-[#242526] ",
         { "h-36 flex-col": isOpen }
       )}
     >
