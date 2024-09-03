@@ -1,6 +1,6 @@
-import { ChevronLeft, ChevronRight } from "lucide-react"
-
 import { cn } from "@/lib/utils"
+
+import { Button } from "../ui/button"
 
 interface Props extends React.ComponentProps<"div"> {
   stepNum: number
@@ -28,35 +28,25 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="container fixed bottom-1  left-1/2  mx-auto flex w-full -translate-x-1/2 items-center justify-center lg:bottom-2 2xl:bottom-3"
+      className="fixed inset-x-0  bottom-1 z-50  mx-auto flex w-11/12 max-w-[1204px] items-center  justify-between rounded-2xl border-2 border-[#17191b]/40  bg-[#F0F2F1] px-4  py-1 dark:bg-[#17191b] "
     >
-      <div className=" glassmorphism left-0 mx-auto flex min-h-10  w-11/12 items-center justify-between px-4  xl:py-4 ">
-        <button
-          onClick={decrement}
-          className={cn({ "opacity-30": stepNum === 0 })}
-        >
-          <ChevronLeft className="2xl:size-10" />
-        </button>
-        <div className={`mx-auto flex h-full grow justify-center gap-x-4 px-1`}>
-          {Array.from({ length: totalSteps }).map((_, index) => (
-            <button
-              onClick={() => setStepNum(index)}
-              key={index}
-              className={cn(
-                "h-full min-h-2 w-7 rounded-md bg-zinc-800 transition-all sm:w-10",
-                "xl:min-h-3 xl:w-10  2xl:min-h-4   2xl:w-20",
-                { "bg-zinc-300": stepNum === index }
-              )}
-            />
-          ))}
-        </div>
-        <button
-          onClick={increment}
-          className={cn({ "opacity-30": stepNum === totalSteps - 1 })}
-        >
-          <ChevronRight className="2xl:size-10" />
-        </button>
+      <div className={`flex h-full grow gap-x-1 `}>
+        {Array.from({ length: totalSteps }).map((_, index) => (
+          <button
+            onClick={() => setStepNum(index)}
+            key={index}
+            className={cn(
+              "h-full min-h-1  w-6 rounded-md bg-zinc-700 transition-all  duration-700",
+              {
+                "bg-red-500 w-10 glow-effect": stepNum === index,
+              }
+            )}
+          />
+        ))}
       </div>
+      <Button className="!py-1  dark:bg-[#292b2d]   dark:text-primary ">
+        Start Setup{" "}
+      </Button>
     </div>
   )
 }

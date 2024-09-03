@@ -152,7 +152,11 @@
   }
 
   .dark-bg {
-    background: linear-gradient(137deg, rgba(17, 18, 20, .65) 4.87%, rgba(12, 13, 15, .9) 95%);
+    background: linear-gradient(
+      137deg,
+      rgba(17, 18, 20, 0.65) 4.87%,
+      rgba(12, 13, 15, 0.9) 95%
+    );
   }
 
   .onboarding-container {
@@ -171,4 +175,11 @@
   .onboarding-right {
     @apply md:w-[20rem] xl:w-[30rem]  2xl:w-[35rem]  xl:min-h-72  2xl:min-h-96  md:min-h-52 w-full h-full bg-slate-500 min-h-80 rounded-lg;
   }
+}
+
+.glow-effect {
+  box-shadow:
+    0 0 5px rgb(239 68 68),
+    0 0 10px rgb(239 68 68),
+    0 0 20px rgb(239 68 68);
 }
