@@ -1,3 +1,5 @@
+import { ChevronLeft } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 import { Button } from "../ui/button"
@@ -28,23 +30,29 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="fixed inset-x-0  bottom-1 z-50  mx-auto flex w-11/12 max-w-[1204px] items-center  justify-between rounded-2xl border-2 border-[#17191b]/40  bg-[#F0F2F1] px-4  py-1 dark:bg-[#17191b] "
+      className="fixed inset-x-0  bottom-2 z-50  mx-auto flex w-11/12 max-w-[1204px] items-center  justify-between rounded-2xl border-2 border-[#17191b]/40  bg-[#F0F2F1] px-4  py-1 dark:bg-[#17191b] xl:py-2 2xl:py-6"
     >
-      <div className={`flex h-full grow gap-x-1 `}>
-        {Array.from({ length: totalSteps }).map((_, index) => (
-          <button
-            onClick={() => setStepNum(index)}
-            key={index}
-            className={cn(
-              "h-full min-h-1  w-6 rounded-md bg-zinc-700 transition-all  duration-700",
-              {
-                "bg-red-500 w-10 glow-effect": stepNum === index,
-              }
-            )}
-          />
-        ))}
+      <div className="flex items-center gap-x-4">
+        <button onClick={decrement}>
+          <ChevronLeft className="size-4 2xl:size-6" />
+        </button>
+
+        <div className={`flex h-full grow gap-x-1 `}>
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <button
+              onClick={() => setStepNum(index)}
+              key={index}
+              className={cn(
+                "h-full min-h-1 w-6  rounded-md bg-zinc-700 transition-all duration-700  xl:min-h-2",
+                {
+                  "bg-red-500 w-10 glow-effect": stepNum === index,
+                }
+              )}
+            />
+          ))}
+        </div>
       </div>
-      <Button className="!py-1  dark:bg-[#292b2d]   dark:text-primary ">
+      <Button className="!py-1  " variant={"ry"} onClick={increment}>
         Start Setup{" "}
       </Button>
     </div>

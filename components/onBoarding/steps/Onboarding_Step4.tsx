@@ -2,7 +2,9 @@ import React from "react"
 import Image from "next/image"
 import facebookLogo from "@/assets/facebook-logo.svg"
 import githubLogo from "@/assets/github-logo.svg"
+import bgEffect from "@/assets/svg-gradient/bottom-small.svg"
 import youtubeLogo from "@/assets/youtube-logo.svg"
+import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -36,29 +38,36 @@ interface Props extends React.ComponentProps<"div"> {}
 
 export const Onboarding_Step4 = ({ ...props }: Props) => {
   return (
-    <div
-      className="container  mb-20 flex animate-fade-in flex-col items-center justify-center gap-y-6 px-4  py-10 lg:flex-row  xl:mb-32"
-      {...props}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4 lg:flex-row"
     >
-      <div className="onboarding-left  flex flex-col items-start justify-center   ">
-        <h1 className="text-2xl font-bold xl:text-4xl  2xl:mt-5 2xl:text-5xl">
+      <div className="onboarding-left  flex flex-col items-start justify-center md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
+        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl  2xl:mt-5 2xl:text-5xl">
           Stay in touch
         </h1>
-        <p className="max-w-2xl font-serif text-xl font-medium xl:text-2xl 2xl:text-3xl">
+        <p className="font-serif text-xl font-medium xl:text-2xl 2xl:text-3xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
           dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <div className="ml-10  flex size-full flex-col   justify-between   gap-y-2 rounded-lg pr-5 md:w-2/3">
+      <div className=" flex  size-full flex-col justify-between   gap-y-2   rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
         <div>
-          <Spotlight
+          {/* <Spotlight
             className="-top-40 left-0 md:-top-20 md:left-60"
             fill="rgba(109, 35, 182)"
-          />
+          /> */}
+          <div className="pointer-events-none absolute inset-0    flex flex-col opacity-60 dark:opacity-35 md:-top-20 md:left-60">
+            <Image src={bgEffect} alt="bgEffect" />
+            <Image src={bgEffect} alt="bgEffect" className="rotate-180" />
+          </div>
+
           <div className="flex flex-col items-start justify-center py-2  md:items-center md:py-4 md:text-center">
             <Mail className="size-14 2xl:size-20" />
             <h2 className="my-4 text-xl font-bold  xl:text-2xl 2xl:text-3xl">
-              Sing up fo your newsletter
+              Sign up fo your newsletter
             </h2>
             <p className="xl:text-xl  2xl:text-2xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
@@ -71,16 +80,16 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
                 placeholder="example@gmail.com"
                 className="w-full rounded-lg py-2 placeholder:px-4 "
               />
-              <Button>Subscribe</Button>
+              <Button variant={"ry"}>Subscribe</Button>
             </div>
           </div>
         </div>
 
-        <div className="mt-5 space-y-4">
+        <div className="mt-5 ">
           {items.map((item) => (
             <div
               key={item.title}
-              className="flex items-center justify-between "
+              className="flex items-center justify-between border-t border-[#292b2d]/20 py-3"
             >
               <div className="flex items-center gap-x-2 ">
                 <Image
@@ -88,6 +97,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
                   alt=""
                   className="size-8   xl:size-12 2xl:size-16"
                 />
+
                 <div>
                   <h3 className="text-sm font-bold xl:text-lg  2xl:text-xl ">
                     {item.title}
@@ -100,6 +110,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
                 href={item.link}
                 className={buttonVariants({
                   className: "xl:text-lg xl:px-8 xl:py-6",
+                  variant: "ry",
                 })}
                 target="_blank"
               >
@@ -109,6 +120,6 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
