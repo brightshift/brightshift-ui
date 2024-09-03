@@ -1,10 +1,16 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 interface Props extends React.ComponentProps<"div"> {}
 
 export const Onboarding_Step3 = ({ ...props }: Props) => {
   return (
-    <div {...props} className="onboarding-container gap-5">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="onboarding-container gap-5"
+    >
       <div className="onboarding-left">
         <h1>Two</h1>
         <p>
@@ -20,6 +26,6 @@ export const Onboarding_Step3 = ({ ...props }: Props) => {
         className="onboarding-right "
         style={{ boxShadow: `0px 0px 20rem 2rem rgba(109, 35, 182, 0.2)` }}
       ></div>
-    </div>
+    </motion.div>
   )
 }

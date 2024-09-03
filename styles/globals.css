@@ -160,7 +160,7 @@
   }
 
   .onboarding-container {
-    @apply flex min-h-[80vh] w-full items-center justify-center px-4 py-12 flex-col gap-y-3 md:flex-row animate-fade-in;
+    @apply flex min-h-screen w-full items-center justify-center px-4 py-12 flex-col gap-y-3 md:flex-row animate-fade-in;
   }
   .onboarding-left {
     @apply w-full  md:w-1/3;
