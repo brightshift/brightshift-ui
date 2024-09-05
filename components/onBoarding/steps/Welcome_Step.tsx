@@ -1,6 +1,8 @@
 import React from "react"
 import { motion } from "framer-motion"
 
+import { RoundedMesh } from "@/components/Neon"
+
 interface Props extends React.ComponentProps<"div"> {}
 
 export const Welcome_Step = ({ ...props }: Props) => {
@@ -19,6 +21,10 @@ export const Welcome_Step = ({ ...props }: Props) => {
       <p className=" max-w-2xl  md:text-xl  xl:text-2xl 2xl:max-w-4xl 2xl:text-4xl">
         {`Let's`} Find your dream job and start your journey.
       </p>
+      <RoundedMesh
+        fill="rgba(109, 35, 182)"
+        className="absolute left-0 top-0  z-10 size-full  opacity-20"
+      />
     </motion.div>
   )
 }
