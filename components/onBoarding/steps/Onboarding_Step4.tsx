@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Spotlight } from "@/components/aceternity"
+import { Spotlight, SpotlightSimplified } from "@/components/aceternity"
 
 const items = [
   {
@@ -53,16 +53,13 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
           dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <div className=" flex  size-full flex-col justify-between   gap-y-2   rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
+
+      <div className=" relative   left-0 top-0 flex size-full flex-col justify-between   gap-y-2   rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
         <div>
-          {/* <Spotlight
-            className="-top-40 left-0 md:-top-20 md:left-60"
+          <SpotlightSimplified
             fill="rgba(109, 35, 182)"
-          /> */}
-          <div className="pointer-events-none absolute inset-0    flex flex-col opacity-60 dark:opacity-35 md:-top-20 md:left-60">
-            <Image src={bgEffect} alt="bgEffect" />
-            <Image src={bgEffect} alt="bgEffect" className="rotate-180" />
-          </div>
+            className="absolute left-0 top-0"
+          />
 
           <div className="flex flex-col items-start justify-center py-2  md:items-center md:py-4 md:text-center">
             <Mail className="size-14 2xl:size-20" />

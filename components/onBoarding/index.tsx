@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import { AnimatePresence } from "framer-motion"
 
+import { RoundedMesh } from "@/components/Neon"
+
 import { BoardingFloatingBar } from "./BoardingFloatingBar"
 import {
   Onboarding_Step2,
@@ -26,6 +28,7 @@ export const OnBoarding = ({ ...props }: Props) => {
     <div
       {...props}
       className=" container  min-h-screen text-zinc-900   dark:text-white"
+      style={{ scrollbarGutter: "stable" }}
     >
       {Arrangement.map((Item, index) => (
         <AnimatePresence key={index}>
