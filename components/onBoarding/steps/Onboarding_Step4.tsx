@@ -1,13 +1,11 @@
-import React from "react";
-import Image from "next/image";
-import facebookLogo from "@/assets/facebook-logo.svg";
-import githubLogo from "@/assets/github-logo.svg";
-import bgEffect from "@/assets/svg-gradient/bottom-small.svg";
-import youtubeLogo from "@/assets/youtube-logo.svg";
-import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
-
-
+import React from "react"
+import Image from "next/image"
+import facebookLogo from "@/assets/facebook-logo.svg"
+import githubLogo from "@/assets/github-logo.svg"
+import bgEffect from "@/assets/svg-gradient/bottom-small.svg"
+import youtubeLogo from "@/assets/youtube-logo.svg"
+import { motion } from "framer-motion"
+import { Mail } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Spotlight, SpotlightSimplified } from "@/components/aceternity"
