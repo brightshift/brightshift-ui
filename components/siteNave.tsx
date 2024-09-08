@@ -36,11 +36,11 @@ export const SiteNave = ({ ...props }: Props) => {
     <nav
       {...props}
       className={cn(
-        "glassmorphism dark:dark-bg sticky top-4 z-50 mx-auto flex w-11/12 max-w-[1204px] rounded-2xl bg-white p-4 shadow transition-all dark:shadow-[#242526] ",
+        "glassmorphism dark:dark-bg sticky top-4 z-50 mx-auto flex w-11/12 max-w-[1204px] rounded-2xl bg-white p-4 shadow transition-all duration-700 dark:shadow-[#242526] ",
         { "h-36 flex-col": isOpen }
       )}
     >
-      <div className="   flex w-full items-start justify-between md:items-center ">
+      <div className="flex w-full items-start justify-between md:items-center ">
         {/* Point One */}
         <MainNav items={siteConfig.mainNav} />
         {/* Point Two */}

@@ -46,13 +46,15 @@ export const Hero = ({ ...props }: Props) => {
         </button>
       </div>
       <div className="relative z-20 flex items-center justify-center py-10">
+        <div className="shadow-2 rounded-xl border-[12px] border-double border-[#323337] bg-[#212224] shadow-white/40 backdrop-blur-lg">
         <Image
-          className="rounded-lg border-2 border-black shadow-2xl shadow-background dark:border-white"
+          className=""
           src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzA3dnRoM2I1eDZqMjd5ZG5wZ3BtbGIyZWF6ZDdjbGQ1dDN2b2lhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdTkHW1KZPdvdS0/giphy.gif"
-          width={1024}
+          width={1180}
           height={500}
           alt="Picture of the author"
         />
+        </div>
       </div>
       {/* <div className="hero_main  half-circle-gradient"></div> */}
       <div className="lightHalf-circle-gradient dark:half-circle-gradient absolute -right-0 left-0 top-3/4 z-10 min-h-72 flex-none shadow-[0_-110px_132px_#ffffff26] "></div>

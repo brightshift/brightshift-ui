@@ -121,25 +121,27 @@
 
   .half-circle-gradient {
     background: radial-gradient(
-      circle at 50% 50%,
+      ellipse at 50% 0%,
       rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0.1) 75%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(128, 128, 128, 0.2) 50%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.3) 100%
     );
     clip-path: ellipse(60% 60% at 50% 70%);
   }
 
   .lightHalf-circle-gradient {
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.4) 50%,
-      rgba(0, 0, 0, 0.2) 75%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    clip-path: ellipse(60% 60% at 50% 70%);
-  }
+      background: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.4) 25%,
+        rgba(128, 128, 128, 0.2) 50%,
+        rgba(240, 242, 241, 0.1) 75%,
+        rgba(240, 242, 241, 0.3) 100%
+      );
+      clip-path: ellipse(60% 60% at 50% 70%);
+}
 
   .body-gradient {
     background: linear-gradient(
@@ -154,9 +156,15 @@
   .dark-bg {
     background: linear-gradient(
       137deg,
-      rgba(17, 18, 20, 0.65) 4.87%,
-      rgba(12, 13, 15, 0.9) 95%
+      rgba(17, 18, 20, 0.75) 4.87%,
+      rgba(12, 13, 15, 0.9) 75%
     );
+  }
+  
+  .shadow-2 {
+    --tw-shadow: 0 0 50px rgb(0 0 0 / 0.25);
+    --tw-shadow-colored: 0 0 50px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .onboarding-container {
