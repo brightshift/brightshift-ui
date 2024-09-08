@@ -47,13 +47,13 @@ export const Hero = ({ ...props }: Props) => {
       </div>
       <div className="relative z-20 flex items-center justify-center py-10">
         <div className="shadow-2 rounded-xl border-[12px] border-double border-[#323337] bg-[#212224] shadow-white/40 backdrop-blur-lg">
-        <Image
-          className=""
-          src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzA3dnRoM2I1eDZqMjd5ZG5wZ3BtbGIyZWF6ZDdjbGQ1dDN2b2lhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdTkHW1KZPdvdS0/giphy.gif"
-          width={1180}
-          height={500}
-          alt="Picture of the author"
-        />
+          <Image
+            className=""
+            src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzA3dnRoM2I1eDZqMjd5ZG5wZ3BtbGIyZWF6ZDdjbGQ1dDN2b2lhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2JdTkHW1KZPdvdS0/giphy.gif"
+            width={1180}
+            height={500}
+            alt="Picture of the author"
+          />
         </div>
       </div>
       {/* <div className="hero_main  half-circle-gradient"></div> */}
