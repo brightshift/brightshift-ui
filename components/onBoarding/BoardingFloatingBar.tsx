@@ -30,7 +30,7 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="fixed inset-x-0  bottom-2 z-50  mx-auto flex w-11/12 max-w-[1204px] items-center  justify-between rounded-2xl border-2 border-[#17191b]/40  bg-[#F0F2F1] px-4  py-1 dark:bg-[#17191b] xl:py-2 2xl:py-6"
+      className="onboarding-common  fixed inset-x-0  bottom-2 z-50  mx-auto flex w-11/12 items-center justify-between  rounded-2xl border-2 border-[#17191b]/40 bg-[#F0F2F1]  px-4 py-1 dark:bg-[#17191b] xl:w-full xl:py-2  2xl:py-6  "
     >
       <div className="flex items-center gap-x-4">
         <button onClick={decrement}>
@@ -40,12 +40,12 @@ export const BoardingFloatingBar = ({
         <div className={`flex h-full grow gap-x-1 `}>
           {Array.from({ length: totalSteps }).map((_, index) => (
             <button
-              onClick={() => setStepNum(index)}
+              // onClick={() => setStepNum(index)}
               key={index}
               className={cn(
-                "h-full min-h-1 w-6  rounded-md bg-zinc-700 transition-all duration-700  xl:min-h-2",
+                "h-full min-h-1 w-[1.3rem]  rounded-md bg-zinc-700 transition-all duration-700  xl:min-h-2",
                 {
-                  "bg-red-500 w-10 glow-effect": stepNum === index,
+                  "bg-red-500 w-11 glow-effect": stepNum === index,
                 }
               )}
             />

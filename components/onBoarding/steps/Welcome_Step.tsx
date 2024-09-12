@@ -11,10 +11,10 @@ export const Welcome_Step = ({ ...props }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex   min-h-screen flex-col items-center justify-center gap-y-4 *:text-center"
+      className="flex   min-h-screen flex-col items-center justify-center text-center"
     >
       <h1
-        className={`dark:silver-text    w-full   text-5xl font-medium capitalize leading-[80px] tracking-normal text-zinc-900 md:text-7xl   2xl:text-8xl`}
+        className={`dark:silver-text    w-full   py-5 text-5xl font-medium  capitalize tracking-normal text-zinc-900   md:text-7xl 2xl:text-8xl`}
       >
         Welcome to Brightshift
       </h1>
