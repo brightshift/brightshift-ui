@@ -77,7 +77,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <input
                 type="email"
                 placeholder="example@gmail.com"
-                className="w-full rounded-lg border-none p-2 outline-none  focus:outline-none"
+                className="w-full rounded-lg border-none  p-2 caret-[#6d23b6] outline-none focus:outline-none"
               />
               <Button variant={"ry"}>Subscribe</Button>
             </div>
