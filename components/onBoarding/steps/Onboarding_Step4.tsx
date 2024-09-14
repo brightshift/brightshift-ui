@@ -106,7 +106,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <a
                 href={item.link}
                 className={buttonVariants({
-                  className: "xl:p-6",
+                  className: "xl:py-5 xl:px-10",
                   variant: "ry",
                 })}
                 target="_blank"
