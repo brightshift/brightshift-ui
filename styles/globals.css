@@ -167,9 +167,17 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
-  .onboarding-container {
-    @apply flex min-h-screen w-full items-center justify-center px-4 py-12 flex-col gap-y-3 md:flex-row animate-fade-in;
+ 
+
+  .onboarding-common {
+    @apply container lg:max-w-[1204px]  2xl:max-w-[1440px];
   }
+
+  .onboarding-container {
+    @apply flex min-h-screen w-full items-center justify-center px-4 lg:px-0 py-12 flex-col gap-y-3 md:flex-row ;
+  }
+
+
   .onboarding-left {
     @apply w-full  md:w-1/3;
     h1 {

@@ -27,7 +27,7 @@ export const OnBoarding = ({ ...props }: Props) => {
   return (
     <div
       {...props}
-      className=" container  min-h-screen text-zinc-900   dark:text-white"
+      className=" onboarding-common min-h-screen   text-zinc-900  dark:text-white    "
       style={{ scrollbarGutter: "stable" }}
     >
       {Arrangement.map((Item, index) => (
