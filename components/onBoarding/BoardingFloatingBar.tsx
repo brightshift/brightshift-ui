@@ -30,7 +30,7 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="onboarding-common  fixed inset-x-0  bottom-2 z-50  mx-auto flex w-11/12 items-center justify-between  rounded-2xl border-2 border-[#17191b]/40 bg-[#F0F2F1]  px-4 py-1 dark:bg-[#17191b] xl:w-full xl:py-2  2xl:py-6  "
+      className="onboarding-common  fixed inset-x-0  bottom-2 z-50  mx-auto flex  items-center justify-between  rounded-2xl border-2 border-[#17191b]/40 bg-[#F0F2F1]  px-4 py-1 dark:bg-[#17191b] xl:w-full xl:py-2  2xl:py-4"
     >
       <div className="flex items-center gap-x-4">
         <button onClick={decrement}>
@@ -43,9 +43,9 @@ export const BoardingFloatingBar = ({
               // onClick={() => setStepNum(index)}
               key={index}
               className={cn(
-                "h-full min-h-1 w-[1.3rem]  rounded-md bg-zinc-700 transition-all duration-700  xl:min-h-2",
+                "h-full min-h-1 w-[1.3rem]  rounded-md bg-zinc-700 transition-all duration-700  xl:min-h-[0.4rem]",
                 {
-                  "bg-red-500 w-11 glow-effect": stepNum === index,
+                  "bg-red-500 w-12 glow-effect": stepNum === index,
                 }
               )}
             />
@@ -53,7 +53,7 @@ export const BoardingFloatingBar = ({
         </div>
       </div>
       <Button className="!py-1  " variant={"ry"} onClick={increment}>
-        Start Setup{" "}
+        Start Setup
       </Button>
     </div>
   )

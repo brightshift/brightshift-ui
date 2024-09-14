@@ -9,7 +9,7 @@ export const Onboarding_Step3 = ({ ...props }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="onboarding-container gap-5"
+      className="onboarding-container onboarding-common gap-5"
     >
       <div className="onboarding-left">
         <h1>Two</h1>

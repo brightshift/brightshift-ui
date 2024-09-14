@@ -2,7 +2,6 @@ import React from "react"
 import Image from "next/image"
 import facebookLogo from "@/assets/facebook-logo.svg"
 import githubLogo from "@/assets/github-logo.svg"
-import bgEffect from "@/assets/svg-gradient/bottom-small.svg"
 import youtubeLogo from "@/assets/youtube-logo.svg"
 import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
@@ -42,13 +41,13 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4  lg:flex-row lg:px-0"
+      className="onboarding-common relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4  lg:flex-row lg:px-0"
     >
       <div className="onboarding-left  flex flex-col items-start justify-center md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
-        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl  2xl:mt-5 2xl:text-5xl">
+        <h1 className="text-2xl font-bold md:text-3xl xl:text-2xl  2xl:mt-5 2xl:text-5xl">
           Stay in touch
         </h1>
-        <p className="font-serif text-xl font-medium xl:text-2xl 2xl:text-3xl">
+        <p className="font-serif text-lg font-medium text-gray-200 xl:text-base 2xl:text-3xl ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
           dolor sit amet consectetur adipisicing elit.
         </p>
@@ -62,11 +61,14 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
           />
 
           <div className="flex flex-col items-start justify-center py-2  md:items-center md:py-4 md:text-center">
-            <Mail className="size-14 2xl:size-20" />
-            <h2 className="my-4 text-xl font-bold  xl:text-2xl 2xl:text-3xl">
+            <Mail
+              className=" size-14 2xl:size-20"
+              style={{ filter: "drop-shadow(0 0 8px rgb(239 68 68))" }}
+            />
+            <h2 className="my-4 text-xl font-bold  text-gray-100 xl:text-xl 2xl:text-3xl">
               Sign up fo your newsletter
             </h2>
-            <p className="xl:text-xl  2xl:text-2xl">
+            <p className="text-gray-200  xl:text-lg 2xl:text-2xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
               voluptas reprehenderit neque ut nesciunt! Ipsum minima optio quis
               odio quia.
@@ -75,7 +77,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <input
                 type="email"
                 placeholder="example@gmail.com"
-                className="w-full rounded-lg py-2 placeholder:px-4 "
+                className="w-full rounded-lg border-none p-2 outline-none  focus:outline-none"
               />
               <Button variant={"ry"}>Subscribe</Button>
             </div>
@@ -91,22 +93,23 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <div className="flex items-center gap-x-2 ">
                 <Image
                   src={item.image}
-                  alt=""
-                  className="size-8   xl:size-12 2xl:size-16"
+                  alt={item.title}
+                  aria-label="social icons"
+                  className="size-7   2xl:size-10"
                 />
 
                 <div>
-                  <h3 className="text-sm font-bold xl:text-lg  2xl:text-xl ">
+                  <h3 className="text-sm font-semibold xl:text-base  2xl:text-lg  ">
                     {item.title}
                   </h3>
-                  <p className="text-sm  xl:text-base">{item.subtitle}</p>
+                  <p className="text-sm  ">{item.subtitle}</p>
                 </div>
               </div>
 
               <a
                 href={item.link}
                 className={buttonVariants({
-                  className: "xl:text-lg xl:px-8 xl:py-6",
+                  // className: "xl:text-lg xl:px-8 xl:py-6",
                   variant: "ry",
                 })}
                 target="_blank"

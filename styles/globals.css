@@ -159,24 +159,21 @@
     );
   }
 
- 
-
   .onboarding-common {
-    @apply container lg:max-w-[1204px]  2xl:max-w-[1440px];
+    @apply container xl:max-w-[1204px] lg:max-w-[100vw]   2xl:max-w-[1440px] w-[95%];
   }
 
   .onboarding-container {
-    @apply flex min-h-screen w-full items-center justify-center px-4 lg:px-0 py-12 flex-col gap-y-3 md:flex-row ;
+    @apply flex min-h-screen w-full items-center justify-center px-2 sm:px-4 lg:px-0 py-12 flex-col gap-y-3 md:flex-row;
   }
-
 
   .onboarding-left {
     @apply w-full  md:w-1/3;
     h1 {
-      @apply text-2xl xl:text-4xl  font-bold 2xl:text-6xl;
+      @apply text-2xl xl:text-3xl  font-bold 2xl:text-2xl;
     }
     p {
-      @apply text-xl font-medium font-serif xl:text-2xl 2xl:text-3xl;
+      @apply text-xl font-medium font-serif xl:text-lg 2xl:text-lg;
     }
   }
 
@@ -190,4 +187,14 @@
     0 0 5px rgb(239 68 68),
     0 0 10px rgb(239 68 68),
     0 0 20px rgb(239 68 68);
+}
+
+.glowing-icon {
+  color: #ff4d4d; /* Color of the mail icon */
+  filter: drop-shadow(0 0 8px #ff4d4d); /* Glow effect */
+  transition: all 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.glowing-icon:hover {
+  filter: drop-shadow(0 0 15px #ff4d4d); /* Stronger glow on hover */
 }
