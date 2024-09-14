@@ -11,7 +11,7 @@ export const Onboarding_Step2 = ({ ...props }: Props) => {
       exit={{ opacity: 0 }}
       className="onboarding-container gap-5"
     >
-      <div className="onboarding-left ">
+      <div className="onboarding-left">
         <h1>One</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
@@ -19,11 +19,11 @@ export const Onboarding_Step2 = ({ ...props }: Props) => {
         </p>
       </div>
       <div
-        className="onboarding-right  glow-effect"
+        className="onboarding-right glow-effect"
         style={{ boxShadow: `0px 0px 20rem 10px #3b0f1c ` }}
       ></div>
       <div
-        className="onboarding-right  glow-effect"
+        className="onboarding-right glow-effect"
         style={{ boxShadow: `0px 0px 20rem 10px #3b0f1c ` }}
       ></div>
     </motion.div>

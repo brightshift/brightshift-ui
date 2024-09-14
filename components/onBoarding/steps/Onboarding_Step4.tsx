@@ -42,10 +42,10 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4  lg:flex-row lg:px-0"
+      className="relative left-0 top-0 flex min-h-screen flex-col items-center justify-center gap-y-6 px-4 py-12 lg:flex-row lg:px-0"
     >
-      <div className="onboarding-left  flex flex-col items-start justify-center md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
-        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl  2xl:mt-5 2xl:text-5xl">
+      <div className="onboarding-left flex flex-col items-start justify-center gap-4 md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
+        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl 2xl:mt-5 2xl:text-5xl">
           Stay in touch
         </h1>
         <p className="font-serif text-xl font-medium xl:text-2xl 2xl:text-3xl">
@@ -54,7 +54,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
         </p>
       </div>
 
-      <div className=" relative   left-0 top-0 flex size-full flex-col justify-between   gap-y-2   rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
+      <div className=" relative left-0 top-0 flex size-full flex-col justify-between gap-y-2 rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
         <div>
           <SpotlightSimplified
             fill="rgba(109, 35, 182)"
@@ -75,7 +75,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <input
                 type="email"
                 placeholder="example@gmail.com"
-                className="w-full rounded-lg py-2 placeholder:px-4 "
+                className="w-full rounded-lg p-2 focus:outline-none"
               />
               <Button variant={"ry"}>Subscribe</Button>
             </div>
@@ -88,25 +88,25 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               key={item.title}
               className="flex items-center justify-between border-t border-[#292b2d]/20 py-3"
             >
-              <div className="flex items-center gap-x-2 ">
+              <div className="flex items-center gap-x-2">
                 <Image
                   src={item.image}
                   alt=""
-                  className="size-8   xl:size-12 2xl:size-16"
+                  className="size-8 xl:size-12 2xl:size-16"
                 />
 
                 <div>
-                  <h3 className="text-sm font-bold xl:text-lg  2xl:text-xl ">
+                  <h3 className="text-sm font-bold xl:text-lg 2xl:text-xl ">
                     {item.title}
                   </h3>
-                  <p className="text-sm  xl:text-base">{item.subtitle}</p>
+                  <p className="text-sm xl:text-base">{item.subtitle}</p>
                 </div>
               </div>
 
               <a
                 href={item.link}
                 className={buttonVariants({
-                  className: "xl:text-lg xl:px-8 xl:py-6",
+                  className: "xl:p-6",
                   variant: "ry",
                 })}
                 target="_blank"
