@@ -12,7 +12,7 @@ export const Hero = ({ ...props }: Props) => {
   return (
     <div {...props} className="h-full max-h-screen min-h-full">
       <h1
-        className={`lightSilver-text dark:silver-text mx-auto my-10 w-2/3 pb-2 text-center text-[80px] font-medium capitalize leading-[80px] tracking-normal${inter_tight.className} `}
+        className={`lightSilver-text dark:silver-text mx-auto my-10 w-2/3 pb-2 text-center text-6xl md:text-8xl font-medium capitalize leading-[80px] tracking-normal${inter_tight.className} `}
       >
         find the best job for you.
       </h1>

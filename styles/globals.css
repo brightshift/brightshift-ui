@@ -169,7 +169,7 @@
   }
 
   .onboarding-common {
-    @apply container xl:max-w-[1204px] lg:max-w-[100vw]   2xl:max-w-[1440px] w-[95%];
+    @apply container xl:max-w-[1334px] lg:max-w-full   2xl:max-w-[1440px] w-[95%];
   }
 
   .onboarding-container {

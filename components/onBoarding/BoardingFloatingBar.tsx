@@ -30,7 +30,7 @@ export const BoardingFloatingBar = ({
   return (
     <div
       {...props}
-      className="onboarding-common  fixed inset-x-0  bottom-2 z-50  mx-auto flex  items-center justify-between  rounded-xl border-2 border-[#17191b]/40 bg-[#F0F2F1]  py-1 pl-4 pr-2 dark:bg-[#17191b] xl:w-full xl:py-2  2xl:py-4"
+      className="onboarding-common  fixed inset-x-0  bottom-2 z-50  mx-auto flex  items-center justify-between  rounded-xl border-2 border-[#17191b]/40 bg-[#F0F2F1]  py-1 pl-4 pr-1 dark:bg-[#17191b] xl:w-full"
     >
       <div className="flex items-center gap-x-4">
         {/* <button onClick={decrement}>

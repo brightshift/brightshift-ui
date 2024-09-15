@@ -41,7 +41,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="onboarding-common relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4  lg:flex-row lg:px-0"
+      className="onboarding-common relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4 py-14 lg:flex-row lg:px-0"
     >
       <div className="onboarding-left  flex flex-col items-start justify-center gap-y-4 md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
         <h1 className="text-2xl font-bold md:text-3xl xl:text-2xl  2xl:mt-5 2xl:text-5xl">
@@ -109,7 +109,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               <a
                 href={item.link}
                 className={buttonVariants({
-                  // className: "xl:text-lg xl:px-8 xl:py-6",
+                  className: "md:px-8",
                   variant: "ry",
                 })}
                 target="_blank"
