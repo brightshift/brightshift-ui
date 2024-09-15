@@ -43,7 +43,7 @@ export const BoardingFloatingBar = ({
               // onClick={() => setStepNum(index)}
               key={index}
               className={cn(
-                "h-full min-h-1 w-[1.1rem]  rounded-md bg-zinc-700 transition-all duration-700  ", 
+                "h-full min-h-1 w-[1.1rem]  rounded-md bg-zinc-700 transition-all duration-700  ",
                 {
                   "bg-red-500 w-12 glow-effect": stepNum === index,
                 }
