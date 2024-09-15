@@ -43,7 +43,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
       exit={{ opacity: 0 }}
       className="onboarding-common relative left-0 top-0   flex min-h-screen  flex-col items-center justify-center gap-y-6 px-4  lg:flex-row lg:px-0"
     >
-      <div className="onboarding-left  flex flex-col items-start justify-center md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
+      <div className="onboarding-left  flex flex-col items-start justify-center gap-y-4 md:w-3/5 md:items-center md:text-center lg:items-start lg:text-start">
         <h1 className="text-2xl font-bold md:text-3xl xl:text-2xl  2xl:mt-5 2xl:text-5xl">
           Stay in touch
         </h1>
@@ -53,7 +53,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
         </p>
       </div>
 
-      <div className=" relative   left-0 top-0 flex size-full flex-col justify-between   gap-y-2   rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
+      <div className=" relative left-0 top-0 flex size-full flex-col justify-between gap-y-2 rounded-lg pr-5 md:w-2/3 lg:ml-10 lg:w-full">
         <div>
           <SpotlightSimplified
             fill="rgba(109, 35, 182)"
@@ -90,7 +90,7 @@ export const Onboarding_Step4 = ({ ...props }: Props) => {
               key={item.title}
               className="flex items-center justify-between border-t border-[#292b2d]/20 py-3"
             >
-              <div className="flex items-center gap-x-2 ">
+              <div className="flex items-center gap-x-2">
                 <Image
                   src={item.image}
                   alt={item.title}
