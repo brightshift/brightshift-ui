@@ -38,5 +38,6 @@ yarn-error.log*
 .contentlayer
 .env
 
+tsconfig.tsbuildinfo
 
 bun.lockb
