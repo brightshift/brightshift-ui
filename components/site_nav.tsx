@@ -6,10 +6,10 @@ import { AlignJustify } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme_toggle"
 
 import { Icons } from "./icons"
-import { MainNav } from "./main-nav"
+import { MainNav } from "./main_nav"
 import { buttonVariants } from "./ui/button"
 
 interface Props extends React.ComponentProps<"header"> {}

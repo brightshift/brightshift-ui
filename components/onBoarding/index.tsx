@@ -3,9 +3,9 @@
 import React, { useState } from "react"
 import { AnimatePresence } from "framer-motion"
 
-import { RoundedMesh } from "@/components/Neon"
+import { RoundedMesh } from "@/components/neon"
 
-import { BoardingFloatingBar } from "./BoardingFloatingBar"
+import { BoardingFloatingBar } from "./boarding_floating_bar"
 import {
   Onboarding_Step2,
   Onboarding_Step3,

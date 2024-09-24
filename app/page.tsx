@@ -1,8 +1,8 @@
 "use client"
 
-import { SiteNave } from "@/components/siteNave"
+import { SiteNave } from "@/components/site_nav"
 
-import { Hero } from "./_Home"
+import { Hero } from "./Home"
 
 export default function IndexPage() {
   return (

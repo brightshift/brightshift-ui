@@ -1,7 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 
-import { RoundedMesh } from "@/components/Neon"
+import { RoundedMesh } from "@/components/neon"
 
 interface Props extends React.ComponentProps<"div"> {}
 

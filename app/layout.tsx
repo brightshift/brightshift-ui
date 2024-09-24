@@ -9,9 +9,9 @@ import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
-import { SiteNave } from "@/components/siteNave"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+import { SiteNave } from "@/components/site_nav"
+import { TailwindIndicator } from "@/components/tailwind_indicator"
+import { ThemeProvider } from "@/components/theme_provider"
 
 // export const metadata: Metadata = {
 //   title: {
