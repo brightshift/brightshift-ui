@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { SiteNave } from "@/components/site_nav"
-import { SiteHeader } from "@/components/site-header"
+import { SiteHeader } from "@/components/site_header"
 import { TailwindIndicator } from "@/components/tailwind_indicator"
 import { ThemeProvider } from "@/components/theme_provider"
 
