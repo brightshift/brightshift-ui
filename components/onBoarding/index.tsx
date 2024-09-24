@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { AnimatePresence } from "framer-motion"
 
-import { RoundedMesh } from "@/components/neon"
+import { RoundedMesh } from "@/components/Neon"
 
 import { BoardingFloatingBar } from "./boarding_floating_bar"
 import {
