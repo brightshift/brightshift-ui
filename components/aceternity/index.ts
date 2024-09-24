@@ -1,1 +1,1 @@
-export * from "./spotlight"
+export * from "./Spotlight"
