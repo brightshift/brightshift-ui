@@ -1,14 +1,12 @@
-import React  from 'react'
+import React, { PropsWithChildren } from "react"
 
-interface props {
-    children: React.ReactNode
-}
+import { DashboardNav } from "./components"
 
-const DashboardLayout = ({children}: Props) => {
+const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
     <div>
-
-        {children}
+      <DashboardNav />
+      {children}
     </div>
   )
 }
