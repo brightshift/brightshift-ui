@@ -29,7 +29,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 import { AccountSwitcher } from "./account-switcher"
-import { MailDisplay } from "./mail-display"    
+import { MailDisplay } from "./mail-display"
 import { MailList } from "./mail-list"
 import { Nav } from "./nav"
 

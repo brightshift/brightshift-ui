@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { type Mail } from "@/data/dashboard.data"
 import {
   AlertCircle,
   Archive,
@@ -16,6 +17,7 @@ import {
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useMail } from "@/hooks/use-mail"
 import { Input } from "@/components/ui/input"
 import {
   ResizableHandle,
@@ -26,13 +28,10 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-
 import { AccountSwitcher } from "./account-switcher"
 import { MailDisplay } from "./mail-display"
 import { MailList } from "./mail-list"
 import { Nav } from "./nav"
-import { type Mail } from "@/data/dashboard.data"
-import { useMail } from "@/hooks/use-mail"
 
 interface MailProps {
   accounts: {

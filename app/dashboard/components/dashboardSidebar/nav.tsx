@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { buttonVariants } from "@/components/ui/button"
 import { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
