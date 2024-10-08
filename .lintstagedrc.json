@@ -1,8 +1,7 @@
 {
     "*.{js,jsx,ts,tsx}": [
         "format:write",
-        "lint:fix",
-        "eslint"
+        "lint:fix"
     ],
     "*.{json,md,yml}": [
         "format:write"

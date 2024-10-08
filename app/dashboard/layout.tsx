@@ -19,7 +19,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
   const layout = cookies.get("react-resizable-panels:layout:mail")
   const collapsed = cookies.get("react-resizable-panels:collapsed")
 
-  const defaultLayout = layout ? JSON.parse(layout) : undefined
+  const defaultLayout = layout ? JSON.parse(layout) : [20, 32, 48]
   const defaultCollapsed = collapsed
     ? JSON.parse(collapsed)
     : (false as boolean)
