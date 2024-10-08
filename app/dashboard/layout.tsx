@@ -1,8 +1,8 @@
 "use client"
 
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren, useEffect, useState } from "react"
 import { dashboardSidebarData } from "@/data"
-import reactUseCookie from "react-use-cookie"
+import cookies from "js-cookie"
 
 import { cn } from "@/lib/utils"
 import {
@@ -15,15 +15,28 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { DashboardNav, DashboardSidebarNav } from "./components"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
-  const [collapsed, setIsCollapsed] = reactUseCookie(
-    "react-resizable-panels:collapsed"
-  )
-  const [layout, setLayout] = reactUseCookie(
-    "react-resizable-panels:layout:mail"
-  )
+  const [defaultCollapsed, setIsCollapsed] = useState(false)
+  const [defaultLayout, setDefaultLayout] = useState([20, 32, 48])
 
-  const defaultLayout: number[] = layout ? JSON.parse(layout) : [20, 32, 48]
-  const defaultCollapsed: boolean = collapsed ? JSON.parse(collapsed) : false
+  useEffect(() => {
+    const getLayout = cookies.get("react-resizable-panels:layout:mail")
+    const isCollapsed = cookies.get("react-resizable-panels:collapsed")
+
+    const LayoutValue = getLayout ? JSON.parse(getLayout) : [20, 32, 48]
+    const CollapsedValue = isCollapsed ? JSON.parse(isCollapsed) : false
+
+    setDefaultLayout(LayoutValue)
+    setIsCollapsed(CollapsedValue)
+  }, [])
+
+  const onDefaultLayout = (sizes: number[]) => {
+    document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`
+    setDefaultLayout(sizes)
+  }
+  const onIsCollapsed = (val: boolean) => {
+    document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(true)}`
+    setIsCollapsed(val)
+  }
 
   return (
     <div className="min-h-screen ">
@@ -32,9 +45,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
       <TooltipProvider delayDuration={0}>
         <ResizablePanelGroup
           direction="horizontal"
-          onLayout={(sizes: number[]) => {
-            setLayout(JSON.stringify(sizes))
-          }}
+          onLayout={(sizes: number[]) => onDefaultLayout(sizes)}
           className="h-full max-h-[800px] min-h-[90vh] items-stretch "
         >
           <ResizablePanel
@@ -44,11 +55,9 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
             minSize={15}
             maxSize={20}
             onCollapse={() => {
-              setIsCollapsed(JSON.stringify(true))
+              onIsCollapsed(true)
             }}
-            onResize={() => {
-              setIsCollapsed(JSON.stringify(false))
-            }}
+            onResize={() => setIsCollapsed(false)}
             className={cn(
               defaultCollapsed &&
                 "min-w-[50px] transition-all duration-300 ease-in-out"

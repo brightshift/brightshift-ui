@@ -1,7 +1,5 @@
 {
   "*.{js,jsx,ts,tsx}": [
-    "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
-  ],
-  "*.{json,md,yml}": ["prettier --write"]
+  ]
 }
