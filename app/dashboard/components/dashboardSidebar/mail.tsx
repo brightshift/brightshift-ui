@@ -29,9 +29,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 import { AccountSwitcher } from "./account-switcher"
+import { DashboardSidebarNav } from "./DashboardSidebarNav"
 import { MailDisplay } from "./mail-display"
 import { MailList } from "./mail-list"
-import { Nav } from "./nav"
 
 interface MailProps {
   accounts: {
@@ -98,7 +98,7 @@ export function Mail({
             <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
           </div>
           <Separator />
-          <Nav
+          <DashboardSidebarNav
             isCollapsed={isCollapsed}
             links={[
               {
@@ -140,7 +140,7 @@ export function Mail({
             ]}
           />
           <Separator />
-          <Nav
+          <DashboardSidebarNav
             isCollapsed={isCollapsed}
             links={[
               {

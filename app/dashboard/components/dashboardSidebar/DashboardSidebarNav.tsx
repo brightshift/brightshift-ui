@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { LucideIcon } from "lucide-react"
+import { type DashboardSidebarDataType } from "@/data"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -13,15 +13,10 @@ import {
 
 interface NavProps {
   isCollapsed: boolean
-  links: {
-    title: string
-    label?: string
-    icon: LucideIcon
-    variant: "default" | "ghost"
-  }[]
+  links: DashboardSidebarDataType[]
 }
 
-export function Nav({ links, isCollapsed }: NavProps) {
+export function DashboardSidebarNav({ links, isCollapsed }: NavProps) {
   return (
     <div
       data-collapsed={isCollapsed}
