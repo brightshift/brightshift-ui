@@ -1,10 +1,5 @@
 {
-    "*.{js,jsx,ts,tsx}": [
-        "format:write",
-        "lint:fix",
-        "eslint"
-    ],
-    "*.{json,md,yml}": [
-        "format:write"
-    ]
+  "*.{js,jsx,ts,tsx}": [
+    "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
+  ]
 }
