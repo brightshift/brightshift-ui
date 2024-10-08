@@ -8,8 +8,8 @@ export const mainNavItems = [
     href: "/dashboard/dashboard",
   },
   {
-    name: "Customers",
-    href: "/dashboard/customers",
+    name: "cards",
+    href: "/dashboard/cards",
   },
   {
     name: "Products",
