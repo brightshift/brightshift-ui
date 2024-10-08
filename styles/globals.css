@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 300, 100%, 0%;
+    /* --background: 0 0% 100%; */
     --foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -76,6 +77,133 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
+}
+
+@layer components {
+  .silver-text {
+    @apply bg-[linear-gradient(rgb(255,255,255)_0%,rgba(255,255,255,0.5)_100%)] text-transparent bg-clip-text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lightSilver-text {
+    @apply bg-[linear-gradient(rgb(0,0,0)_0%,rgba(0,0,0,0.5)_100%)] text-transparent bg-clip-text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero_animation {
+    @apply opacity-100;
+    transform: perspective(1200px) translateX(0px) translateY(-80px)
+      scale(0.85443) rotate(0deg) rotateX(4.85232deg) rotateY(0deg) skewX(0deg)
+      skewY(0deg) translateZ(0px);
+  }
+  .hero_main {
+    @apply shadow-[0_-110px_132px_#ffffff26] flex-none min-h-80 left-0  fixed -right-0 z-10 rounded-[100%] top-3/4;
+  }
+
+  /*  Effects */
+  .glassmorphism {
+    @apply shadow-[0_8px_32px_0_rgba(_31,38,135,0.37_)] backdrop-blur-[_6px_] border rounded-[10px] border-solid border-[rgba(_255,255,255,0.18_)];
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .circle-gradient {
+    background: linear-gradient(
+      180.00106681960753deg,
+      #ffffff -55.00000000000001%,
+      rgba(0, 0, 0, 0) 65%
+    );
+    transform: perspective(1200px);
+  }
+
+  .half-circle-gradient {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(128, 128, 128, 0.2) 50%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    clip-path: ellipse(60% 60% at 50% 70%);
+  }
+
+  .lightHalf-circle-gradient {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(128, 128, 128, 0.2) 50%,
+      rgba(240, 242, 241, 0.1) 75%,
+      rgba(240, 242, 241, 0.3) 100%
+    );
+    clip-path: ellipse(60% 60% at 50% 70%);
+  }
+
+  .body-gradient {
+    background: linear-gradient(
+      135deg,
+      #030711 75%,
+      #3b0f1c 80%,
+      #2c0e0e 85%,
+      #30170e 90%
+    );
+  }
+
+  .dark-bg {
+    background: linear-gradient(
+      137deg,
+      rgba(17, 18, 20, 0.75) 4.87%,
+      rgba(12, 13, 15, 0.9) 75%
+    );
+  }
+
+  .shadow-2 {
+    --tw-shadow: 0 0 50px rgb(0 0 0 / 0.25);
+    --tw-shadow-colored: 0 0 50px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .onboarding-common {
+    @apply container xl:max-w-[1334px] lg:max-w-full   2xl:max-w-[1440px] w-[95%];
+  }
+
+  .onboarding-container {
+    @apply flex min-h-screen w-full items-center justify-center px-2 sm:px-4 lg:px-0 py-12 flex-col gap-y-3 md:flex-row;
+  }
+
+  .onboarding-left {
+    @apply w-full md:w-1/3;
+    h1 {
+      @apply text-2xl xl:text-3xl  font-bold 2xl:text-2xl;
+    }
+    p {
+      @apply text-xl font-medium font-serif xl:text-lg 2xl:text-lg;
+    }
+  }
+
+  .onboarding-right {
+    @apply md:w-[20rem] xl:w-[30rem]  2xl:w-[35rem]  xl:min-h-72  2xl:min-h-96  md:min-h-52 w-full h-full bg-slate-500 min-h-80 rounded-lg;
+  }
+}
+
+.glow-effect {
+  box-shadow:
+    0 0 5px rgb(239 68 68),
+    0 0 10px rgb(239 68 68),
+    0 0 20px rgb(239 68 68);
+}
+
+.glowing-icon {
+  color: #ff4d4d; /* Color of the mail icon */
+  filter: drop-shadow(0 0 8px #ff4d4d); /* Glow effect */
+  transition: all 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.glowing-icon:hover {
+  filter: drop-shadow(0 0 15px #ff4d4d); /* Stronger glow on hover */
 }

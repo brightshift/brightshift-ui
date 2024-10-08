@@ -1,68 +1,14 @@
 "use client"
 
-import { useEffect } from "react"
-import Link from "next/link"
-import { SignedIn, useAuth, useUser } from "@clerk/nextjs"
+import { SiteNave } from "@/components/site_nav"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import { Hero } from "./Home"
 
 export default function IndexPage() {
-  const { isSignedIn, user, isLoaded } = useUser()
-  console.log(user, isSignedIn, isLoaded)
-
-  const { getToken } = useAuth()
-
-  useEffect(() => {
-    const authenticatedFetch = async () => {
-      return fetch("http://127.0.0.1:8000/api/private/cats", {
-        headers: { Authorization: `Bearer ${await getToken()}` },
-      }).then((res) => res.json())
-    }
-
-    if (isSignedIn) {
-      authenticatedFetch()
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err))
-    }
-  }, [getToken, isSignedIn])
-
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <SignedIn>
-          <div>This content is visible only to signed in users.</div>
-        </SignedIn>
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Beautifully designed components <br className="hidden sm:inline" />
-          built with Radix UI and Tailwind CSS.
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
-        </p>
-      </div>
-      <div className="flex gap-4">
-        <Link href={"/sign-up"} className={buttonVariants()}>
-          Sign Up
-        </Link>
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
-          Documentation
-        </Link>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.github}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          GitHub
-        </Link>
-      </div>
-    </section>
+    <>
+      <SiteNave />
+      <Hero />
+    </>
   )
 }

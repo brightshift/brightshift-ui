@@ -8,9 +8,10 @@ import { ClerkProvider } from "@clerk/nextjs"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+import { SiteHeader } from "@/components/site_header"
+import { SiteNave } from "@/components/site_nav"
+import { TailwindIndicator } from "@/components/tailwind_indicator"
+import { ThemeProvider } from "@/components/theme_provider"
 
 // export const metadata: Metadata = {
 //   title: {
@@ -48,13 +49,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen scroll-smooth bg-[#F0F2F1] font-sans text-zinc-900 antialiased duration-300 dark:bg-[#07080A] dark:text-white",
             fontSans.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
               <div className="flex-1">{children}</div>
             </div>
             <TailwindIndicator />
