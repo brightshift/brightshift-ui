@@ -17,7 +17,7 @@ export function MainNav({
           <Link
             href={item.href}
             key={item.name}
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium capitalize transition-colors hover:text-primary"
           >
             {item.name}
           </Link>
