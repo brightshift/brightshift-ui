@@ -15,14 +15,14 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { DashboardNav, DashboardSidebarNav } from "./components"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
-  const [defaultCollapsed, setIsCollapsed] = useState(false)
-  const [defaultLayout, setDefaultLayout] = useState([20, 32, 48])
+  const [defaultCollapsed, setIsCollapsed] = useState(true)
+  const [defaultLayout, setDefaultLayout] = useState<number[]>([4, 96])
 
   useEffect(() => {
     const getLayout = cookies.get("react-resizable-panels:layout:mail")
     const isCollapsed = cookies.get("react-resizable-panels:collapsed")
 
-    const LayoutValue = getLayout ? JSON.parse(getLayout) : [20, 32, 48]
+    const LayoutValue = getLayout ? JSON.parse(getLayout) : undefined
     const CollapsedValue = isCollapsed ? JSON.parse(isCollapsed) : false
 
     setDefaultLayout(LayoutValue)
@@ -40,7 +40,11 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="min-h-screen ">
-      <DashboardNav setIsCollapsed={setIsCollapsed} />
+      <DashboardNav
+        onDefaultLayout={onDefaultLayout}
+        onIsCollapsed={onIsCollapsed}
+        isCollapsed={defaultCollapsed}
+      />
 
       <TooltipProvider delayDuration={0}>
         <ResizablePanelGroup
@@ -49,14 +53,12 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
           className="h-full max-h-[800px] min-h-[90vh] items-stretch "
         >
           <ResizablePanel
-            defaultSize={defaultLayout[0]}
-            collapsedSize={4}
+            defaultSize={defaultLayout?.at(0)}
+            collapsedSize={defaultCollapsed ? 0 : 20}
             collapsible={true}
             minSize={15}
             maxSize={20}
-            onCollapse={() => {
-              onIsCollapsed(true)
-            }}
+            onCollapse={() => onIsCollapsed(true)}
             onResize={() => setIsCollapsed(false)}
             className={cn(
               defaultCollapsed &&
@@ -70,9 +72,8 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
           </ResizablePanel>
           <ResizableHandle withHandle />
 
-          <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
+          <ResizablePanel defaultSize={defaultLayout?.at(1)} minSize={30}>
             {children}
-            {/* <EmailList />  */}
           </ResizablePanel>
         </ResizablePanelGroup>
       </TooltipProvider>

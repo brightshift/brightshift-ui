@@ -7,10 +7,17 @@ import { Search } from "./search"
 import { UserNav } from "./user-nav"
 
 interface Props extends React.ComponentProps<"div"> {
-  setIsCollapsed: React.Dispatch<any>
+  onDefaultLayout: (sizes: number[]) => void
+  onIsCollapsed: (val: boolean) => void
+  isCollapsed: boolean
 }
 
-export const DashboardNav = ({ setIsCollapsed, ...props }: Props) => {
+export const DashboardNav = ({
+  onDefaultLayout,
+  onIsCollapsed,
+  isCollapsed,
+  ...props
+}: Props) => {
   return (
     <div {...props}>
       <div className="border-b">
@@ -18,9 +25,11 @@ export const DashboardNav = ({ setIsCollapsed, ...props }: Props) => {
           <Button
             className="px-8"
             onClick={() => {
-              // document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify([4, 96])}`
-              // setDefaultLayout([4, 96])
-              setIsCollapsed((pre: boolean) => !pre)
+              onIsCollapsed(isCollapsed ? false : true)
+
+              onDefaultLayout([16, 83])
+              // isCollapsed ? [4, 96] : [16.9831516353, 83.0168483647]
+              // onDefaultLayout([4, 96])
             }}
           >
             Open

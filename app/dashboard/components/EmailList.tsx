@@ -1,11 +1,15 @@
+"use client"
+
 import React from "react"
 import { accounts, mails, type Mail } from "@/data/dashboard.data"
+import { useMail } from "@/hooks"
 import { Search } from "lucide-react"
 
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+import { MailDisplay } from "./dashboardSidebar"
 import { MailList } from "./dashboardSidebar/mail-list"
 
 interface Props extends React.ComponentProps<"div"> {}

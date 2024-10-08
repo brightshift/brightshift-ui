@@ -171,8 +171,6 @@ export const mails = [
   },
 ]
 
-export type Mail = (typeof mails)[number]
-
 export const accounts = [
   {
     label: "Alicia Koch",
@@ -211,8 +209,6 @@ export const accounts = [
     ),
   },
 ]
-
-export type Account = (typeof accounts)[number]
 
 export const contacts = [
   {
@@ -298,3 +294,5 @@ export const contacts = [
 ]
 
 export type Contact = (typeof contacts)[number]
+export type Mail = (typeof mails)[number]
+export type Account = (typeof accounts)[number]
