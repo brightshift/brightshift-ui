@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn add --dev lint-staged
-
-# yarn lint:fix
-# yarn format:write
+yarn lint:fix
+yarn format:write

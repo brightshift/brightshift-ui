@@ -5,8 +5,7 @@
   "engines": {
     "node": ">=21.6.2",
     "yarn": ">=1.22.2",
-    "npm": "please-use-yarn",
-    "bun": "please-use-yarn"
+    "npm": "please-use-yarn"
   },
   "scripts": {
     "dev": "next dev",
