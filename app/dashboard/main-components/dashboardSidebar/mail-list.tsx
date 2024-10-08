@@ -1,5 +1,5 @@
 import { ComponentProps } from "react"
-import { Mail } from "@/data/dashboard.data"
+import { Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { formatDistanceToNow } from "date-fns"
 

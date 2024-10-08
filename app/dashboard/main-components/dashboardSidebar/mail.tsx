@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type Mail } from "@/data/dashboard.data"
+import { type Mail } from "@/data/dashboard/dashboard.data"
 import {
   AlertCircle,
   Archive,

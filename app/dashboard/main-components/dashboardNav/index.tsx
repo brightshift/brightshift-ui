@@ -25,10 +25,10 @@ export const DashboardNav = ({
           <Button
             className="px-8"
             onClick={() => {
-              onIsCollapsed(isCollapsed ? false : true)
-
-              onDefaultLayout([16, 83])
-              // isCollapsed ? [4, 96] : [16.9831516353, 83.0168483647]
+              // onIsCollapsed(isCollapsed ? false : true)
+              // onDefaultLayout(isCollapsed ? [4, 96] : [16.9831516353, 83.0168483647])
+              //
+              // onDefaultLayout([16, 83])
               // onDefaultLayout([4, 96])
             }}
           >

@@ -1,6 +1,6 @@
 import React from "react"
 
-import { EmailList } from "./components/EmailList"
+import { EmailList } from "./main-components/EmailList"
 
 const DashboardPage = () => {
   return (

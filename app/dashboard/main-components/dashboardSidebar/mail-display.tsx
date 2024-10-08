@@ -1,4 +1,4 @@
-import { Mail } from "@/data/dashboard.data"
+import { Mail } from "@/data/dashboard/dashboard.data"
 import { addDays, addHours, format, nextSaturday } from "date-fns"
 import {
   Archive,

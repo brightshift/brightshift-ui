@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { accounts, mails, type Mail } from "@/data/dashboard.data"
+import { accounts, mails, type Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { Search } from "lucide-react"
 

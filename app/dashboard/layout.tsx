@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/resizable"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-import { DashboardNav, DashboardSidebarNav } from "./components"
+import { DashboardNav, DashboardSidebarNav } from "./main-components"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   const [defaultCollapsed, setIsCollapsed] = useState(true)
