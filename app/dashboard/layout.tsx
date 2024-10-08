@@ -1,19 +1,18 @@
-"use client";
+"use client"
 
-import React, { PropsWithChildren, useState } from "react";
-import cookies from "js-cookie";
+import React, { PropsWithChildren, useState } from "react"
+import cookies from "js-cookie"
 
+import { cn } from "@/lib/utils"
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
-
-import { cn } from "@/lib/utils";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
-import { TooltipProvider } from "@/components/ui/tooltip";
-
-
-
-import { DashboardNav } from "./components";
-import { DashboardSidebar } from "./components/dashboardSidebar/DashboardSidebar";
-
+import { DashboardNav } from "./components"
+import { DashboardSidebar } from "./components/dashboardSidebar/DashboardSidebar"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   const layout = cookies.get("react-resizable-panels:layout:mail")

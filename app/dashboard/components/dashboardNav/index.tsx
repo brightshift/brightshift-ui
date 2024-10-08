@@ -8,13 +8,9 @@ import { UserNav } from "./user-nav"
 
 interface Props extends React.ComponentProps<"div"> {
   setIsCollapsed: React.Dispatch<any>
-  
 }
 
-export const DashboardNav = ({
-  setIsCollapsed,
-  ...props
-}: Props) => {
+export const DashboardNav = ({ setIsCollapsed, ...props }: Props) => {
   return (
     <div {...props}>
       <div className="border-b">
