@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { useRouter } from "next/navigation"
 import { accounts, mails, type Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { Search } from "lucide-react"
@@ -15,6 +16,11 @@ import { MailList } from "./dashboardSidebar/mail-list"
 interface Props extends React.ComponentProps<"div"> {}
 
 export const EmailList = ({ ...props }: Props) => {
+  const router = useRouter()
+
+  const navigateToSubPage = (id: string) => {
+    router.push(`/dashboard/${id}`)
+  }
   return (
     <div {...props}>
       <Tabs defaultValue="all">
@@ -46,10 +52,13 @@ export const EmailList = ({ ...props }: Props) => {
         </div>
 
         <TabsContent value="all" className="m-0 ">
-          <MailList items={mails} />
+          <MailList items={mails} onClick={navigateToSubPage} />
         </TabsContent>
         <TabsContent value="unread" className="m-0">
-          <MailList items={mails.filter((item) => !item.read)} />
+          <MailList
+            onClick={navigateToSubPage}
+            items={mails.filter((item) => !item.read)}
+          />
         </TabsContent>
       </Tabs>
     </div>
