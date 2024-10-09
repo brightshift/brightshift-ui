@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface MailListProps {
   items: Mail[]
-  onClick: (id: string) => void
+  onClick?: (id: string) => void
 }
 
 export function MailList({ items, onClick }: MailListProps) {
@@ -22,7 +22,7 @@ export function MailList({ items, onClick }: MailListProps) {
               "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
               // mail.selected === item.id && "bg-muted"
             )}
-            onClick={() => onClick(item.id)}
+            onClick={onClick && (() => onClick(item.id))}
 
             // onClick={() =>
             //   setMail({
