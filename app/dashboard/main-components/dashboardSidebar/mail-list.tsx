@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 interface MailListProps {
   items: Mail[]
   onNavigate?: (id: string) => void
-  setIsShowMailPreview: React.Dispatch<React.SetStateAction<boolean>>
+  setIsShowMailPreview?: React.Dispatch<React.SetStateAction<boolean>>
   isSmallDevice?: boolean
 }
 
@@ -33,7 +33,7 @@ export function MailList({
             )}
             onClick={() => {
               if (!isSmallDevice) {
-                setIsShowMailPreview(true)
+                setIsShowMailPreview?.(true)
                 setMail({
                   ...mail,
                   selected: item.id,
