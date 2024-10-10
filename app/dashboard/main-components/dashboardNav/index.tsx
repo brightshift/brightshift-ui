@@ -8,18 +8,9 @@ import { MainNavLarge } from "./main-nav-large"
 import { Search } from "./search"
 import { UserNav } from "./user-nav"
 
-interface Props extends React.ComponentProps<"div"> {
-  onDefaultLayout: (sizes: number[]) => void
-  onIsCollapsed: (val: boolean) => void
-  isCollapsed: boolean
-}
+interface Props extends React.ComponentProps<"div"> {}
 
-export const DashboardNav = ({
-  onDefaultLayout,
-  onIsCollapsed,
-  isCollapsed,
-  ...props
-}: Props) => {
+export const DashboardNav = ({ ...props }: Props) => {
   return (
     <div {...props}>
       <div className="border-b">

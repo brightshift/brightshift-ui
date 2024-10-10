@@ -10,12 +10,18 @@ import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import { MailDisplay } from "./dashboardSidebar"
 import { MailList } from "./dashboardSidebar/mail-list"
 
-interface Props extends React.ComponentProps<"div"> {}
+interface Props extends React.ComponentProps<"div"> {
+  setIsShowMailPreview: React.Dispatch<React.SetStateAction<boolean>>
+  isSmallDevice?: boolean
+}
 
-export const EmailList = ({ ...props }: Props) => {
+export const EmailList = ({
+  setIsShowMailPreview,
+  isSmallDevice,
+  ...props
+}: Props) => {
   const router = useRouter()
 
   const navigateToSubPage = (id: string) => {
@@ -52,12 +58,19 @@ export const EmailList = ({ ...props }: Props) => {
         </div>
 
         <TabsContent value="all" className="m-0 ">
-          <MailList items={mails} onClick={navigateToSubPage} />
+          <MailList
+            items={mails}
+            onNavigate={navigateToSubPage}
+            setIsShowMailPreview={setIsShowMailPreview}
+            isSmallDevice={isSmallDevice}
+          />
         </TabsContent>
         <TabsContent value="unread" className="m-0">
           <MailList
-            onClick={navigateToSubPage}
+            onNavigate={navigateToSubPage}
             items={mails.filter((item) => !item.read)}
+            setIsShowMailPreview={setIsShowMailPreview}
+            isSmallDevice={isSmallDevice}
           />
         </TabsContent>
       </Tabs>

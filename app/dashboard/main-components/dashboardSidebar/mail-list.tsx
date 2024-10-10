@@ -1,5 +1,6 @@
 import { ComponentProps } from "react"
 import { Mail } from "@/data/dashboard/dashboard.data"
+import { useMail } from "@/hooks"
 import { formatDistanceToNow } from "date-fns"
 
 import { cn } from "@/lib/utils"
@@ -8,10 +9,18 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface MailListProps {
   items: Mail[]
-  onClick?: (id: string) => void
+  onNavigate?: (id: string) => void
+  setIsShowMailPreview: React.Dispatch<React.SetStateAction<boolean>>
+  isSmallDevice?: boolean
 }
 
-export function MailList({ items, onClick }: MailListProps) {
+export function MailList({
+  items,
+  onNavigate,
+  setIsShowMailPreview,
+  isSmallDevice,
+}: MailListProps) {
+  const [mail, setMail] = useMail()
   return (
     <ScrollArea className="h-screen">
       <div className="flex flex-col gap-2 p-4 pt-0">
@@ -19,17 +28,20 @@ export function MailList({ items, onClick }: MailListProps) {
           <button
             key={item.id}
             className={cn(
-              "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
-              // mail.selected === item.id && "bg-muted"
+              "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+              mail.selected === item.id && "bg-muted"
             )}
-            onClick={onClick && (() => onClick(item.id))}
-
-            // onClick={() =>
-            //   setMail({
-            //     ...mail,
-            //     selected: item.id,
-            //   })
-            // }
+            onClick={() => {
+              if (!isSmallDevice) {
+                setIsShowMailPreview(true)
+                setMail({
+                  ...mail,
+                  selected: item.id,
+                })
+              } else {
+                onNavigate && onNavigate(item.id)
+              }
+            }}
           >
             <div className="flex w-full flex-col gap-1">
               <div className="flex items-center">
@@ -41,10 +53,10 @@ export function MailList({ items, onClick }: MailListProps) {
                 </div>
                 <div
                   className={cn(
-                    "ml-auto text-xs"
-                    // mail.selected === item.id
-                    //   ? "text-foreground"
-                    //   : "text-muted-foreground"
+                    "ml-auto text-xs",
+                    mail.selected === item.id
+                      ? "text-foreground"
+                      : "text-muted-foreground"
                   )}
                 >
                   {formatDistanceToNow(new Date(item.date), {

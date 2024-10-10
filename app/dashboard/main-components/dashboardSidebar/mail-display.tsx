@@ -1,12 +1,15 @@
 "use client"
 
+import Link from "next/link"
 import { Mail } from "@/data/dashboard/dashboard.data"
 import { addDays, addHours, format, nextSaturday } from "date-fns"
 import {
   Archive,
   ArchiveX,
+  CircleX,
   Clock,
   Forward,
+  Maximize,
   MoreVertical,
   Reply,
   ReplyAll,
@@ -39,43 +42,71 @@ import {
 
 interface MailDisplayProps {
   mail: Mail | null
+  setIsShowMailPreview?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function MailDisplay({ mail }: MailDisplayProps) {
+export function MailDisplay({ mail, setIsShowMailPreview }: MailDisplayProps) {
   const today = new Date()
 
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center p-2">
         <div className="flex items-center gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!mail}>
-                <Archive className="size-4" />
-                <span className="sr-only">Archive</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Archive</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!mail}>
-                <ArchiveX className="size-4" />
-                <span className="sr-only">Move to junk</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Move to junk</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!mail}>
-                <Trash2 className="size-4" />
-                <span className="sr-only">Move to trash</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Move to trash</TooltipContent>
-          </Tooltip>
+          <div className="hidden items-center md:flex ">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" disabled={!mail}>
+                  <Archive className="size-4" />
+                  <span className="sr-only">Archive</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Archive</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" disabled={!mail}>
+                  <ArchiveX className="size-4" />
+                  <span className="sr-only">Move to junk</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Move to junk</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" disabled={!mail}>
+                  <Trash2 className="size-4" />
+                  <span className="sr-only">Move to trash</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Move to trash</TooltipContent>
+            </Tooltip>
+          </div>
+          <div className="md:hidden">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" disabled={!mail}>
+                  <MoreVertical className="size-4" />
+                  <span className="sr-only">More</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <Archive className="mr-2 size-4" />
+                  Archive
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <ArchiveX className="mr-2 size-4" />
+                  Move to junk
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Trash2 className="mr-2 size-4" />
+                  Move to trash
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
           <Separator orientation="vertical" className="mx-1 h-6" />
+
           <Tooltip>
             <Popover>
               <PopoverTrigger asChild>
@@ -94,7 +125,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Later today{" "}
+                      Later today
                       <span className="ml-auto text-muted-foreground">
                         {format(addHours(today, 4), "E, h:m b")}
                       </span>
@@ -165,7 +196,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             <TooltipContent>Forward</TooltipContent>
           </Tooltip>
         </div>
-        <Separator orientation="vertical" className="mx-2 h-6" />
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" disabled={!mail}>
@@ -180,8 +211,18 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             <DropdownMenuItem>Mute thread</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        <Separator orientation="vertical" className="mr-2 h-6" />
+        <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
+          <Link href={`/dashboard/${mail?.id}`}>
+            <Maximize className="size-5" />
+          </Link>
+          <CircleX
+            className="size-5 cursor-pointer"
+            onClick={() => setIsShowMailPreview?.(false)}
+          />
+        </div>
       </div>
-      <Separator />
+
       {mail ? (
         <div className="flex flex-1 flex-col">
           <div className="flex items-start p-4">
