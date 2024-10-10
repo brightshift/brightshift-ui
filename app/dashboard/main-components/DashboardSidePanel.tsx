@@ -1,6 +1,10 @@
-import React from "react"
+"use client"
+
+import React, { useState } from "react"
 import Link from "next/link"
 import { type DashboardSidebarDataType } from "@/data"
+import { motion } from "framer-motion"
+import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui"
@@ -10,27 +14,49 @@ interface NavProps {
 }
 
 const DashboardSidePanel = ({ links }: NavProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(true)
+
   return (
-    <nav className="group flex flex-col gap-4 border-r border-gray-700/40 py-2 data-[collapsed=true]:py-2">
-      <div className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-        {links.map((link) => {
-          return (
-            <Link
-              href="#"
-              className={cn(
-                buttonVariants({ variant: link.variant, size: "icon" }),
-                "size-9",
-                link.variant === "default" &&
-                  "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-              )}
-            >
-              <link.icon className="size-4" />
-              <span className="sr-only">{link.title}</span>
-            </Link>
-          )
-        })}
+    <motion.div
+      className="relative  border-r border-gray-700/40 transition-all"
+      style={{ width: isCollapsed ? "60px" : "200px" }}
+      animate={{ width: isCollapsed ? "60px" : "200px" }}
+    >
+      <div className="group  flex flex-col gap-4  py-2 data-[collapsed=true]:py-2">
+        <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
+          {links.map((link) => {
+            return (
+              <Link
+                href="#"
+                className={cn(
+                  buttonVariants({ variant: link.variant, size: "icon" }),
+                  "flex size-9 w-full items-center gap-x-2 px-1",
+                  link.variant === "default" &&
+                    "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                )}
+              >
+                <link.icon className="size-4" />
+                <motion.span
+                  style={{ display: isCollapsed ? "none" : "block" }}
+                  className="w-full"
+                >
+                  {link.title}
+                </motion.span>
+              </Link>
+            )
+          })}
+        </nav>
       </div>
-    </nav>
+
+      <div
+        className=" absolute -right-3 top-1/2 max-w-6  cursor-pointer self-center  rounded-md  bg-gray-700"
+        onClick={() => setIsCollapsed(!isCollapsed)}
+      >
+        <ChevronRight
+          className={cn("transition-all", { "rotate-180": isCollapsed })}
+        />
+      </div>
+    </motion.div>
   )
 }
 
