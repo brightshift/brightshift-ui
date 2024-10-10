@@ -3,7 +3,7 @@ import { mailFolderList } from "@/data"
 import { Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { formatDistanceToNow } from "date-fns"
-import { FolderOpen, Tags } from "lucide-react"
+import { FolderOpen, FolderPlus, Tags } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -14,6 +14,7 @@ interface MailListProps {
   onNavigate?: (id: string) => void
   setIsShowMailPreview?: React.Dispatch<React.SetStateAction<boolean>>
   isSmallDevice?: boolean
+  className?: string
 }
 
 export function MailList({
@@ -21,11 +22,12 @@ export function MailList({
   onNavigate,
   setIsShowMailPreview,
   isSmallDevice,
+  className,
 }: MailListProps) {
   const [mail, setMail] = useMail()
   return (
     <ScrollArea className="h-screen">
-      <div className="flex flex-col gap-2 p-4 pt-0">
+      <div className={cn("flex flex-col gap-2 p-4 pt-0", className)}>
         {items.map((item) => (
           <button
             key={item.id}
@@ -89,7 +91,7 @@ export function MailList({
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <FolderOpen className="size-4" />
+              <FolderPlus className="size-4" />
 
               <div>
                 {mailFolderList.length ? (

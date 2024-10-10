@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { MailList } from "./dashboardSidebar/mail-list"
+import { MailSearch } from "./MailSearch"
 
 interface Props extends React.ComponentProps<"div"> {
   setIsShowMailPreview: React.Dispatch<React.SetStateAction<boolean>>
@@ -48,14 +49,7 @@ export const EmailList = ({
           </TabsList>
         </div>
         <Separator />
-        <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <form>
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
-              <Input placeholder="Search" className="pl-8" />
-            </div>
-          </form>
-        </div>
+        <MailSearch />
 
         <TabsContent value="all" className="m-0 ">
           <MailList
@@ -63,6 +57,7 @@ export const EmailList = ({
             onNavigate={navigateToSubPage}
             setIsShowMailPreview={setIsShowMailPreview}
             isSmallDevice={isSmallDevice}
+            className="mt-4"
           />
         </TabsContent>
         <TabsContent value="unread" className="m-0">
