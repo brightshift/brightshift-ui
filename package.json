@@ -33,6 +33,7 @@
     "@commitlint/types": "^19.0.3",
     "@faker-js/faker": "^9.0.3",
     "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.2",

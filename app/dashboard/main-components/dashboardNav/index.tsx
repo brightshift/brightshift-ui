@@ -21,13 +21,6 @@ export const DashboardNav = ({ ...props }: Props) => {
               "flex items-center justify-center  gap-2 whitespace-nowrap rounded-md border border-input bg-transparent py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 [&>span]:flex  [&>span]:w-full [&>span]:items-center [&>span]:gap-1 [&>span]:truncate [&_svg]:size-4 [&_svg]:shrink-0"
             )}
             aria-label="Toggle Sidebar"
-            // onClick={() => {
-            // onIsCollapsed(isCollapsed ? false : true)
-            // onDefaultLayout(isCollapsed ? [4, 96] : [16.9831516353, 83.0168483647])
-            //
-            // onDefaultLayout([16, 83])
-            // onDefaultLayout([4, 96])
-            // }}
           >
             <svg
               role="img"
@@ -39,21 +32,12 @@ export const DashboardNav = ({ ...props }: Props) => {
             </svg>
 
             <span>Alicia Koch</span>
-            {/* <SelectValue placeholder="Select an account">
-            {accounts.find((account) => account.email === selectedAccount)?.icon}
-            <span className={cn("ml-2", isCollapsed && "hidden")}>
-              {
-                accounts.find((account) => account.email === selectedAccount)
-                  ?.label
-              }
-            </span>
-          </SelectValue> */}
           </Button>
 
           <MainNav className="mx-6 hidden lg:flex" />
           <div className="flex items-center justify-end">
             <div className="ml-auto flex items-center space-x-2 sm:space-x-4">
-              <Search />
+              {/* <Search /> */}
               <UserNav />
             </div>
 

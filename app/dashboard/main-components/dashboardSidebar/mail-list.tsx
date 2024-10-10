@@ -1,7 +1,9 @@
 import { ComponentProps } from "react"
+import { mailFolderList } from "@/data"
 import { Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { formatDistanceToNow } from "date-fns"
+import { FolderOpen, Tags } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -69,15 +71,41 @@ export function MailList({
             <div className="line-clamp-2 text-xs text-muted-foreground">
               {item.text.substring(0, 300)}
             </div>
-            {item.labels.length ? (
-              <div className="flex items-center gap-2">
-                {item.labels.map((label) => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
-                    {label}
-                  </Badge>
-                ))}
+            <div className="flex items-center gap-2">
+              <Tags className="size-4" />
+              <div>
+                {item.labels.length ? (
+                  <div className="flex items-center gap-2">
+                    {item.labels.map((label) => (
+                      <Badge
+                        key={label}
+                        variant={getBadgeVariantFromLabel(label)}
+                      >
+                        {label}
+                      </Badge>
+                    ))}
+                  </div>
+                ) : null}
               </div>
-            ) : null}
+            </div>
+            <div className="flex items-center gap-2">
+              <FolderOpen className="size-4" />
+
+              <div>
+                {mailFolderList.length ? (
+                  <div className="flex items-center gap-2">
+                    {mailFolderList.map((folder) => (
+                      <Badge
+                        key={folder.value}
+                        variant={getBadgeVariantFromLabel(folder.label)}
+                      >
+                        {folder.label}
+                      </Badge>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </button>
         ))}
       </div>

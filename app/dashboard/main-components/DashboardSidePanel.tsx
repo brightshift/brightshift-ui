@@ -9,6 +9,8 @@ import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui"
 
+import { SidebarFolders } from "./SidebarFolders"
+
 interface NavProps {
   links: DashboardSidebarDataType[]
 }
@@ -24,6 +26,7 @@ const DashboardSidePanel = ({ links }: NavProps) => {
     >
       <div className="group  flex flex-col gap-4  py-2 data-[collapsed=true]:py-2">
         <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
+          <SidebarFolders isCollapsed={isCollapsed} />
           {links.map((link) => {
             return (
               <Link
@@ -49,7 +52,7 @@ const DashboardSidePanel = ({ links }: NavProps) => {
       </div>
 
       <div
-        className=" absolute -right-3 top-1/2 max-w-6  cursor-pointer self-center  rounded-md  bg-gray-700"
+        className=" absolute -right-3 top-1/2 max-w-6  cursor-pointer self-center  rounded-xl  bg-gray-700"
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
         <ChevronRight
