@@ -5,8 +5,8 @@ import type { Folders } from "@/types/dashboard"
 export const useFolderManager = () => {
   const { setFolders } = useFolders()
 
-  const addFolders = ({ id, ...folder }: Folders) => {
-    setFolders((pre) => [...pre, { id: crypto.randomUUID(), ...folder }])
+  const addFolders = (NewFolder: Folders) => {
+    setFolders((pre) => [...pre, NewFolder])
   }
 
   const deleteFolder = (id: string) => {
