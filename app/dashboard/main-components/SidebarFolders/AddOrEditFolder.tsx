@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useFolders } from "@/hooks"
 import { Plus } from "lucide-react"
 
+import { Folders } from "@/types/dashboard"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -16,21 +17,20 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ColorPicker } from "@/components/color-picker"
 
-export function AddFolder() {
-  const folder = useFolders()
+interface Props {
+  onSave: ({}: Folders) => void
+  defaultValue?: { name: string; desc: string; color: string; id?: string }
+}
 
-  const [color, setColor] = useState("")
-  const [name, setName] = useState("")
-  const [desc, setDesc] = useState("")
+export function AddFolder({ onSave, defaultValue }: Props) {
+  // const folder = useFolders()
 
-  const addFolders = () => {
-    folder.setFolders([
-      ...folder.folders,
-      { name: "new folder", color: "red", desc: "", id: Date.now().toString() },
-    ])
-  }
+  const [color, setColor] = useState(defaultValue?.color || "")
+  const [name, setName] = useState(defaultValue?.name || "")
+  const [desc, setDesc] = useState(defaultValue?.desc || "")
+
   const submitHandler = () => {
-    console.table({ name, desc, color })
+    onSave({ name, desc, color, id: defaultValue?.id || crypto.randomUUID() })
   }
 
   return (

@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { File, Folder, FolderOpen, Plus } from "lucide-react"
 
+import { Folders } from "@/types/dashboard"
 import { cn } from "@/lib/utils"
 import { useFolders } from "@/hooks/useFolders"
 
-import { AddFolder } from "./AddFolder"
+import { AddFolder } from "./AddOrEditFolder"
 import { FolderItems } from "./FolderItems"
 
 interface Props extends React.ComponentProps<"div"> {
@@ -27,6 +28,9 @@ export const SidebarFolders = ({
   ...props
 }: Props) => {
   const folder = useFolders()
+  const newAddHandler = (obg: Folders) => {
+    console.log("🚀 ~ newAddHandler ~ obg:", obg)
+  }
 
   return (
     <motion.div
@@ -61,7 +65,7 @@ export const SidebarFolders = ({
 
           {isCollapsed || <span>Groups</span>}
         </div>
-        {isCollapsed || <AddFolder />}
+        {isCollapsed || <AddFolder onSave={newAddHandler} />}
       </div>
 
       <div
