@@ -1,43 +1,20 @@
 "use client"
 
 import { useState } from "react"
-import { mailSearchData } from "@/data/dashboard"
+import { Search } from "lucide-react"
 
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
+import { Input } from "@/components/ui"
 
 export function MailSearch() {
   const [searchValue, setSearchValue] = useState("")
   return (
-    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
-      <CommandInput
-        placeholder="Type a command or search..."
-        value={searchValue}
-        onValueChange={setSearchValue}
-        className="rounded-lg"
-      />
-
-      <CommandList>
-        {searchValue && (
-          <>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Suggestions">
-              {mailSearchData.map((item) => (
-                <CommandItem key={item.title}>
-                  <item.icon className="mr-2 size-4" />
-                  <span>{item.title}</span>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </>
-        )}
-      </CommandList>
-    </Command>
+    <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <form>
+        <div className="relative">
+          <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
+          <Input placeholder="Search" className="pl-8" />
+        </div>
+      </form>
+    </div>
   )
 }

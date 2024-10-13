@@ -4,10 +4,10 @@ import { FoldersContextProvider } from "@/context"
 
 interface Props extends React.ComponentProps<"div"> {}
 
-export const DashboardProvider = ({ children }: PropsWithChildren) => {
+export const DashboardProvider = ({ children, ...props }: Props) => {
   return (
-    <Fragment>
+    <div {...props}>
       <FoldersContextProvider>{children}</FoldersContextProvider>
-    </Fragment>
+    </div>
   )
 }

@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
     <DashboardProvider>
       <DashboardNav />
-      <div className="flex ">
+      <div className="flex  ">
         <DashboardSizePanel links={dashboardSidebarData} />
 
         {children}
