@@ -13,12 +13,12 @@ interface Props extends React.ComponentProps<"div"> {
 
 export const Content = ({ mail, ...props }: Props) => {
   return (
-    <div {...props}>
+    <div {...props} className="min-h-[90vh]">
       <TooltipProvider delayDuration={0}>
         {mail !== undefined ? (
-          <MailDisplay mail={mail} />
+          <MailDisplay mail={mail} showActionBtn={false} />
         ) : (
-          <MailDisplay mail={null} />
+          <MailDisplay mail={null} showActionBtn={false} />
         )}
       </TooltipProvider>
     </div>

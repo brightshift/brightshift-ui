@@ -2,23 +2,18 @@
 
 import Link from "next/link"
 import { Mail } from "@/data/dashboard/dashboard.data"
-import { addDays, addHours, format, nextSaturday } from "date-fns"
+import { format } from "date-fns"
 import {
   Archive,
   ArchiveX,
   CircleX,
-  Clock,
-  Forward,
   Maximize,
   MoreVertical,
-  Reply,
-  ReplyAll,
   Trash2,
 } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,11 +21,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Label } from "@/components/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
@@ -43,11 +33,14 @@ import {
 interface MailDisplayProps {
   mail: Mail | null
   setIsShowMailPreview?: React.Dispatch<React.SetStateAction<boolean>>
+  showActionBtn?: boolean
 }
 
-export function MailDisplay({ mail, setIsShowMailPreview }: MailDisplayProps) {
-  const today = new Date()
-
+export function MailDisplay({
+  mail,
+  setIsShowMailPreview,
+  showActionBtn = true,
+}: MailDisplayProps) {
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center p-2">
@@ -123,15 +116,18 @@ export function MailDisplay({ mail, setIsShowMailPreview }: MailDisplayProps) {
           </DropdownMenuContent>
         </DropdownMenu>
         <Separator orientation="vertical" className="mr-2 h-6" />
-        <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
-          <Link href={`/dashboard/${mail?.id}`}>
-            <Maximize className="size-5" />
-          </Link>
-          <CircleX
-            className="size-5 cursor-pointer"
-            onClick={() => setIsShowMailPreview?.(false)}
-          />
-        </div>
+
+        {showActionBtn && (
+          <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
+            <Link href={`/dashboard/${mail?.id}`}>
+              <Maximize className="size-5" />
+            </Link>
+            <CircleX
+              className="size-5 cursor-pointer"
+              onClick={() => setIsShowMailPreview?.(false)}
+            />
+          </div>
+        )}
       </div>
 
       {mail ? (
