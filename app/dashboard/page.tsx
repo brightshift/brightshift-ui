@@ -38,7 +38,7 @@ const DashboardLayout = () => {
   useEffect(() => {
     setFolders([
       ...folders,
-      { name: "applied", color: "red", desc: "", id: crypto.randomUUID() },
+      { name: "applied", color: "red", desc: "", id: crypto?.randomUUID() },
       {
         name: "interview scheduled",
         color: "red",

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useFolders } from "@/hooks"
+import { useFolderManager, useFolders } from "@/hooks"
 import { Plus } from "lucide-react"
 
 import { Folders } from "@/types/dashboard"
@@ -20,23 +20,24 @@ import { ColorPicker } from "@/components/color-picker"
 interface Props {
   onSave: ({}: Folders) => void
   defaultValue?: { name: string; desc: string; color: string; id?: string }
+  children: React.ReactNode
 }
 
-export function AddFolder({ onSave, defaultValue }: Props) {
-  // const folder = useFolders()
-
+export function AddOrEditFolder({ onSave, defaultValue, children }: Props) {
   const [color, setColor] = useState(defaultValue?.color || "")
   const [name, setName] = useState(defaultValue?.name || "")
   const [desc, setDesc] = useState(defaultValue?.desc || "")
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const submitHandler = () => {
     onSave({ name, desc, color, id: defaultValue?.id || crypto.randomUUID() })
+    setIsModalOpen(false)
   }
 
   return (
-    <Dialog>
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild className="cursor-pointer">
-        <Plus className="size-4" />
+        {children}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]" onSubmit={submitHandler}>
         <DialogHeader>

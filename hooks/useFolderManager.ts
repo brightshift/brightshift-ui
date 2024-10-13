@@ -12,6 +12,7 @@ export const useFolderManager = () => {
   const deleteFolder = (id: string) => {
     setFolders((pre) => pre.filter((folder) => folder.id !== id))
   }
+
   const editFolder = (id: string, newValue: Folders) => {
     setFolders((pre) =>
       pre.map((folder) => (folder.id === id ? newValue : folder))
