@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui"
 
-import { SidebarFolders } from "./SidebarFolders"
+import { SidebarFolders } from "./SidebarFolders/SidebarFolders"
 
 interface NavProps {
   links: DashboardSidebarDataType[]
