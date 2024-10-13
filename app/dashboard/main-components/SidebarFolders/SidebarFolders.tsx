@@ -1,44 +1,67 @@
 import React, { useState } from "react"
-import { mailFolderList } from "@/data/dashboard"
 import { motion } from "framer-motion"
-import { File, Folder, FolderOpen } from "lucide-react"
+import { File, Folder, FolderOpen, Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useFolders } from "@/hooks/useFolders"
+
+import { AddFolder } from "./AddFolder"
+import { FolderItems } from "./FolderItems"
 
 interface Props extends React.ComponentProps<"div"> {
   isCollapsed: boolean
+  isOpen: boolean
+
+  setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const SidebarFolders = ({ className, isCollapsed, ...props }: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
+export const SidebarFolders = ({
+  isCollapsed,
+  isOpen,
+
+  setIsCollapsed,
+  setIsOpen,
+
+  className,
+  ...props
+}: Props) => {
+  const folder = useFolders()
+
   return (
     <motion.div
       className="overflow-y-hidden transition-all "
-      style={{
-        height: !isOpen ? "30px" : "100%",
-      }}
+      style={{ height: !isOpen ? "30px" : "100%" }}
     >
       <div
         {...props}
         className={cn(
-          "flex size-9 w-full items-center justify-center gap-x-2 px-1",
+          "flex size-9 w-full items-center  justify-between gap-x-2 px-1",
           className
         )}
-        onClick={() => setIsOpen(!isOpen)}
       >
-        <button>
+        <div
+          className={cn(
+            " box-border flex w-full cursor-pointer items-center   gap-x-2 text-sm font-medium leading-5 text-slate-50 antialiased ",
+            {
+              "justify-center": isCollapsed,
+              "justify-start": !isCollapsed,
+            }
+          )}
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? (
             <FolderOpen className="size-4" />
           ) : (
-            <Folder className="size-4" />
+            <Folder
+              className="size-4"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            />
           )}
-        </button>
-        <motion.span
-          style={{ display: isCollapsed ? "none" : "block" }}
-          className=" box-border w-full cursor-pointer text-sm font-medium leading-5 text-slate-50 antialiased"
-        >
-          Folders
-        </motion.span>
+
+          {isCollapsed || <span>Groups</span>}
+        </div>
+        {isCollapsed || <AddFolder />}
       </div>
 
       <div
@@ -46,17 +69,9 @@ export const SidebarFolders = ({ className, isCollapsed, ...props }: Props) => {
           hidden: isCollapsed,
         })}
       >
-        {mailFolderList.map((item) => {
-          return (
-            <div
-              className=" flex w-full  cursor-pointer items-center gap-x-2 pl-6 text-sm font-medium leading-5 text-slate-50 antialiased dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-              key={item.value}
-            >
-              <File className="size-3" />
-              <p>{item.label}</p>
-            </div>
-          )
-        })}
+        {folder.folders.map((item) => (
+          <FolderItems item={item} key={item.id} />
+        ))}
       </div>
     </motion.div>
   )

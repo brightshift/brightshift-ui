@@ -5,5 +5,5 @@ export interface Folders {
   name: string
   desc: string
   color: string
-  value: Mail[]
+  value?: Mail[]
 }

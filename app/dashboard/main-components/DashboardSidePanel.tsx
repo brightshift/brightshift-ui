@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui"
 
-import { SidebarFolders } from "./SidebarFolders/SidebarFolders"
+import { SidebarFolders } from "./SidebarFolders"
 
 interface NavProps {
   links: DashboardSidebarDataType[]
@@ -17,16 +17,22 @@ interface NavProps {
 
 const DashboardSidePanel = ({ links }: NavProps) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isFolderOpen, setIsFolderOpen] = useState(false)
 
   return (
     <motion.div
       className="relative  border-r border-gray-700/40 transition-all"
-      style={{ width: isCollapsed ? "60px" : "200px" }}
-      animate={{ width: isCollapsed ? "60px" : "200px" }}
+      style={{ width: isCollapsed ? "60px" : "auto" }}
+      animate={{ width: isCollapsed ? "60px" : "auto" }}
     >
       <div className="group  flex flex-col gap-4  py-2 data-[collapsed=true]:py-2">
         <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-          <SidebarFolders isCollapsed={isCollapsed} />
+          <SidebarFolders
+            isCollapsed={isCollapsed}
+            isOpen={isFolderOpen}
+            setIsCollapsed={setIsCollapsed}
+            setIsOpen={setIsFolderOpen}
+          />
           {links.map((link) => {
             return (
               <Link
@@ -53,7 +59,10 @@ const DashboardSidePanel = ({ links }: NavProps) => {
 
       <div
         className=" absolute -right-3 top-1/2 max-w-6  cursor-pointer self-center  rounded-xl  bg-gray-700"
-        onClick={() => setIsCollapsed(!isCollapsed)}
+        onClick={() => {
+          setIsCollapsed(!isCollapsed)
+          if (isFolderOpen) setIsFolderOpen(false)
+        }}
       >
         <ChevronRight
           className={cn("transition-all", { "rotate-180": isCollapsed })}

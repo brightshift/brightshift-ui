@@ -3,19 +3,20 @@
 import React, { PropsWithChildren } from "react"
 import { dashboardSidebarData } from "@/data"
 
+import { DashboardProvider } from "./dashboardProvider"
 import { DashboardNav } from "./main-components"
 import DashboardSizePanel from "./main-components/DashboardSidePanel"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="min-h-screen ">
+    <DashboardProvider>
       <DashboardNav />
       <div className="flex ">
         <DashboardSizePanel links={dashboardSidebarData} />
 
         {children}
       </div>
-    </div>
+    </DashboardProvider>
   )
 }
 

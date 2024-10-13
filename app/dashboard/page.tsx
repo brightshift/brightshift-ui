@@ -2,7 +2,7 @@
 
 import React, { PropsWithChildren, useEffect, useState } from "react"
 import { mails } from "@/data"
-import { useMail, useMediaQuery } from "@/hooks"
+import { useFolders, useMail, useMediaQuery } from "@/hooks"
 import cookies from "js-cookie"
 
 import {
@@ -17,6 +17,8 @@ import { EmailList } from "./main-components/EmailList"
 
 const DashboardLayout = () => {
   const [mail, setMail] = useMail()
+  const { folders, setFolders } = useFolders()
+
   const [defaultLayout, setDefaultLayout] = useState<number[]>([4, 96])
   const [isShowMailPreview, setIsShowMailPreview] = useState(true)
 
@@ -32,6 +34,26 @@ const DashboardLayout = () => {
     document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`
     setDefaultLayout(sizes)
   }
+
+  useEffect(() => {
+    setFolders([
+      ...folders,
+      { name: "applied", color: "red", desc: "", id: crypto.randomUUID() },
+      {
+        name: "interview scheduled",
+        color: "red",
+        desc: "",
+        id: crypto.randomUUID(),
+      },
+      {
+        name: "offer received",
+        color: "red",
+        desc: "",
+        id: crypto.randomUUID(),
+      },
+    ])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
