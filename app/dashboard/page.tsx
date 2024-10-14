@@ -13,6 +13,7 @@ import {
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 import { MailDisplay } from "./main-components"
+import { DashboardDragSidebar } from "./main-components/DashboardDragSidebar"
 import { EmailList } from "./main-components/EmailList"
 
 const DashboardLayout = () => {

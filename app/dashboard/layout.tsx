@@ -5,6 +5,7 @@ import { dashboardSidebarData } from "@/data"
 
 import { DashboardProvider } from "./dashboardProvider"
 import { DashboardNav } from "./main-components"
+import { DashboardDragSidebar } from "./main-components/DashboardDragSidebar"
 import DashboardSizePanel from "./main-components/DashboardSidePanel"
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
@@ -12,7 +13,8 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
     <DashboardProvider>
       <DashboardNav />
       <div className="flex">
-        <DashboardSizePanel links={dashboardSidebarData} />
+        {/* <DashboardSizePanel links={dashboardSidebarData} /> */}
+        <DashboardDragSidebar />
 
         {children}
       </div>
