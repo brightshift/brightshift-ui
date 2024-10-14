@@ -4,12 +4,11 @@ import { GripVertical } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+import { FolderMenu } from "./FolderNext"
 import { Nav } from "./Nav"
-import { SidebarFolders } from "./SidebarFolders"
 
 export const DashboardDragSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true)
-  const [isFolderOpen, setIsFolderOpen] = useState(false)
 
   return (
     <div
@@ -18,12 +17,7 @@ export const DashboardDragSidebar = () => {
         isCollapsed ? "w-16" : "w-64"
       )}
     >
-      <SidebarFolders
-        isCollapsed={isCollapsed}
-        isOpen={isFolderOpen}
-        setIsCollapsed={setIsCollapsed}
-        setIsOpen={setIsFolderOpen}
-      />
+      <FolderMenu isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
