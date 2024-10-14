@@ -5,6 +5,7 @@ import (
 	"io/fs"
 	"log"
 	"net/http"
+	"os"
 )
 
 // Embed the build directory from the frontend.
@@ -18,15 +19,18 @@ var Icon []byte
 func BuildHTTPFS() http.FileSystem {
 	build, err := fs.Sub(BuildFs, "build")
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Warning: 'build' directory not found, serving fallback: %v", err)
+		fallbackFS := os.DirFS("./public")
+		return http.FS(fallbackFS)
 	}
 	return http.FS(build)
 }
 
-func BuildSystemFS() fs.FS{
+func BuildSystemFS() fs.FS {
 	build, err := fs.Sub(BuildFs, "build")
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Warning: 'build' directory not found, returning fallback FS: %v", err)
+		return os.DirFS("./public")
 	}
 	return build
 }
