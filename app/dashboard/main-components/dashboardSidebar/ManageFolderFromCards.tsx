@@ -1,15 +1,8 @@
+import { Mail } from "@/data"
 import { useFolders } from "@/hooks"
-import { EllipsisVertical, Folder, PlusCircle } from "lucide-react"
+import { EllipsisVertical, Folder } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,7 +18,11 @@ import {
 
 import { RestOfTheFolders } from "./RestOfTheFoldersCards"
 
-export function ManageFolderFromCards() {
+type Props = {
+  MailData: Mail
+}
+
+export function ManageFolderFromCards({ MailData }: Props) {
   const { folders } = useFolders()
   const firstTwoFolder = folders?.slice(0, 2)
 
@@ -56,7 +53,7 @@ export function ManageFolderFromCards() {
                 ))}
 
                 <DropdownMenuSeparator />
-                <RestOfTheFolders />
+                <RestOfTheFolders MailData={MailData} />
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

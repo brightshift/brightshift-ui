@@ -71,7 +71,7 @@ export function MailList({
                         addSuffix: true,
                       })}
                     </p>
-                    <ManageFolderFromCards />
+                    <ManageFolderFromCards MailData={item} />
                   </div>
                 </div>
               </div>

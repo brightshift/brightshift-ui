@@ -1,9 +1,10 @@
+import { Mail } from "@/data"
 import { useFolders } from "@/hooks"
 
 import type { Folders } from "@/types/dashboard"
 
 export const useFolderManager = () => {
-  const { setFolders } = useFolders()
+  const { folders, setFolders } = useFolders()
 
   const addFolders = (NewFolder: Folders) => {
     setFolders((pre) => [...pre, NewFolder])
@@ -19,5 +20,58 @@ export const useFolderManager = () => {
     )
   }
 
-  return { addFolders, deleteFolder, editFolder }
+  const addValueIntoFolder = ({
+    folderId,
+    newValue,
+  }: {
+    folderId: string
+    newValue: any
+  }) => {
+    const findParent = folders.find((folder) => folder.id === folderId)
+
+    if (findParent) {
+      setFolders((pre) =>
+        pre.map((folder) =>
+          folder.id === folderId
+            ? {
+                ...folder,
+                value: [...(folder.value || []), newValue],
+              }
+            : folder
+        )
+      )
+    }
+  }
+
+  const removeValueFromFolder = ({
+    folderId,
+    mailId,
+  }: {
+    folderId: string
+    mailId: string
+  }) => {
+    const findParent = folders.find((folder) => folder.id === folderId)
+
+    if (findParent) {
+      setFolders((pre) =>
+        pre.map((folder) =>
+          folder.id === folderId
+            ? {
+                ...folder,
+                value: (folder.value || []).filter(
+                  (mail) => mail.id !== mailId
+                ),
+              }
+            : folder
+        )
+      )
+    }
+  }
+  return {
+    addFolders,
+    deleteFolder,
+    editFolder,
+    addValueIntoFolder,
+    removeValueFromFolder,
+  }
 }
