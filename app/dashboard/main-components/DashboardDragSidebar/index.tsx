@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { dashboardSidebarData } from "@/data"
-import { GripVertical } from "lucide-react"
+import { AlignJustify, GripVertical } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -14,17 +14,21 @@ export const DashboardDragSidebar = () => {
     <div
       className={cn(
         "relative border-r border-gray-800/70 transition-all duration-300 ease-in-out",
-        isCollapsed ? "w-16" : "w-64"
+        isCollapsed ? "w-14" : "w-64"
       )}
     >
       <FolderMenu isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
-        className="absolute -right-3 top-1/2 -translate-y-1/2 rounded-full  p-1 shadow-md"
+        className="clip-path-[polygon(100%_41%,0_0,0_100%)] absolute -right-3 top-6  z-50 rotate-45 rounded-sm    bg-background p-1 shadow-md"
         onClick={() => setIsCollapsed(!isCollapsed)}
+        style={{
+          borderTop: `0.5px solid white`,
+          borderRight: `0.5px solid white`,
+        }}
       >
-        <GripVertical className="size-4 cursor-pointer" />
+        <AlignJustify className="size-3 -rotate-45 cursor-pointer" />
       </button>
     </div>
   )

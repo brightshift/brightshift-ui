@@ -40,16 +40,11 @@ const ColorPicker = forwardRef<
         <PopoverTrigger asChild disabled={disabled} onBlur={onBlur}>
           <Button
             {...props}
-            className={cn("block", className)}
-            name={name}
-            onClick={() => {
-              setOpen(true)
-            }}
-            size="icon"
-            style={{
-              backgroundColor: parsedValue,
-            }}
             variant="outline"
+            className={cn("block size-8", className)}
+            name={name}
+            onClick={() => setOpen(true)}
+            style={{ backgroundColor: parsedValue }}
           >
             <div />
           </Button>

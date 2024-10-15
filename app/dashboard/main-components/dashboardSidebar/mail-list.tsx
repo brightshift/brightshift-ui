@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
+import { ManageFolderFromCards } from "./ManageFolderFromCards"
+
 interface MailListProps {
   items: Mail[]
   onNavigate?: (id: string) => void
@@ -63,9 +65,14 @@ export function MailList({
                       : "text-muted-foreground"
                   )}
                 >
-                  {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: true,
-                  })}
+                  <div className="flex items-center justify-center gap-x-2">
+                    <p>
+                      {formatDistanceToNow(new Date(item.date), {
+                        addSuffix: true,
+                      })}
+                    </p>
+                    <ManageFolderFromCards />
+                  </div>
                 </div>
               </div>
               <div className="text-xs font-medium">{item.subject}</div>
