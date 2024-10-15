@@ -51,7 +51,7 @@ export const MailSearch: React.FC = () => {
 
   return (
     <div>
-      <div className="relative flex items-center overflow-hidden rounded-lg border border-gray-300">
+      <div className="relative flex items-center overflow-hidden rounded-lg ">
         <div
           className={cn("flex flex-wrap items-center py-1 ", {
             "px-2": tags.length > 0,
@@ -85,7 +85,7 @@ export const MailSearch: React.FC = () => {
             value={searchValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="w-full border-none pl-8 focus-visible:outline-none focus-visible:ring-0"
+            className="w-full  pl-8 "
           />
         </div>
 

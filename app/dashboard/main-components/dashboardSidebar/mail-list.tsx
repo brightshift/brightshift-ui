@@ -3,7 +3,7 @@ import { mailFolderList } from "@/data"
 import { Mail } from "@/data/dashboard/dashboard.data"
 import { useMail } from "@/hooks"
 import { formatDistanceToNow } from "date-fns"
-import { FolderOpen, FolderPlus, Tags } from "lucide-react"
+import { FolderPlus, Tags } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"

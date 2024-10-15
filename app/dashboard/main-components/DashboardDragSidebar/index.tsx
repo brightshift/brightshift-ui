@@ -9,6 +9,7 @@ import { Nav } from "./Nav"
 
 export const DashboardDragSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <div
@@ -17,12 +18,20 @@ export const DashboardDragSidebar = () => {
         isCollapsed ? "w-14" : "w-64"
       )}
     >
-      <FolderMenu isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      <FolderMenu
+        isCollapsed={isCollapsed}
+        setIsCollapsed={setIsCollapsed}
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+      />
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
         className="clip-path-[polygon(100%_41%,0_0,0_100%)] absolute -right-3 top-6  z-50 rotate-45 rounded-sm    bg-background p-1 shadow-md"
-        onClick={() => setIsCollapsed(!isCollapsed)}
+        onClick={() => {
+          setIsCollapsed(!isCollapsed)
+          setIsExpanded(false)
+        }}
         style={{
           borderTop: `0.5px solid white`,
           borderRight: `0.5px solid white`,

@@ -15,16 +15,21 @@ import { FolderActions } from "./FolderActions"
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {
   isCollapsed: boolean
+  isExpanded: boolean
+
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const FolderMenu = ({
-  className,
   isCollapsed,
+  isExpanded,
+  className,
+  setIsExpanded,
   setIsCollapsed,
+
   ...props
 }: Props) => {
-  const [isExpanded, setIsExpanded] = useState(false)
   const { folders } = useFolders()
   const { addFolders } = useFolderManager()
   const router = useRouter()

@@ -1,30 +1,39 @@
-import React from "react"
-import { useFolderManager } from "@/hooks"
+import React, { useState } from "react"
+import { useFolderManager, useFolders } from "@/hooks"
 import { EllipsisVertical, PencilLine, Trash2 } from "lucide-react"
 
 import { Folders } from "@/types/dashboard"
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
-import { AddOrEditFolder } from "./AddOrEditFolder"
+import { ColorPicker } from "@/components/color-picker"
+import { Input, Label } from "@/components/ui"
 
 interface Props {
   item: Folders
 }
 
 export const FolderActions = ({ item, ...props }: Props) => {
-  const { deleteFolder, editFolder } = useFolderManager()
+  const [setIsModalOpen, setSetIsModalOpen] = useState(false)
+  const { deleteFolder } = useFolderManager()
+
+  const [color, setColor] = useState(item.color)
+  const [name, setName] = useState(item.name)
+  const [desc, setDesc] = useState(item.desc)
+
   const handleDelete = () => {
     deleteFolder(item.id)
-  }
-  const editHandler = (folder: Folders) => {
-    return editFolder(item.id, folder)
   }
 
   return (
@@ -34,20 +43,14 @@ export const FolderActions = ({ item, ...props }: Props) => {
           <EllipsisVertical className=" size-3" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem className="cursor-pointer gap-x-1">
-            <PencilLine className="size-3" />
-
-            <AddOrEditFolder
-              onSave={editHandler}
-              defaultValue={{
-                color: item.color,
-                desc: item.desc,
-                name: item.name,
-              }}
-            >
-              <span> Edit</span>
-            </AddOrEditFolder>
+          <DropdownMenuItem
+            className="cursor-pointer gap-x-1"
+            onClick={() => setSetIsModalOpen(true)}
+          >
+            <PencilLine className="size-3 " />
+            <span> Edit</span>
           </DropdownMenuItem>
+
           <DropdownMenuItem
             className="cursor-pointer gap-x-1 "
             onClick={handleDelete}
@@ -57,6 +60,48 @@ export const FolderActions = ({ item, ...props }: Props) => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <Dialog open={setIsModalOpen} onOpenChange={setSetIsModalOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Add New Group</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input
+                id="name"
+                className="col-span-3"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Description
+              </Label>
+              <Input
+                id="username"
+                className="col-span-3"
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+              />
+            </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Color
+              </Label>
+              <ColorPicker id="color" value={color} onChange={setColor} />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button type="submit">Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }
