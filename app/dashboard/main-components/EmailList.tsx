@@ -2,11 +2,8 @@
 
 import React from "react"
 import { useRouter } from "next/navigation"
-import { accounts, mails, type Mail } from "@/data/dashboard/dashboard.data"
-import { useMail } from "@/hooks"
-import { Search } from "lucide-react"
+import { mails } from "@/data/dashboard/dashboard.data"
 
-import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
