@@ -61,7 +61,7 @@ const DashboardLayout = () => {
         <ResizablePanelGroup
           direction="horizontal"
           onLayout={(sizes: number[]) => onDefaultLayout(sizes)}
-          className="h-full max-h-[90vh]  items-stretch "
+          className="h-full min-h-[90vh]  items-stretch "
         >
           <ResizablePanel defaultSize={defaultLayout?.at(1)} minSize={30}>
             <EmailList

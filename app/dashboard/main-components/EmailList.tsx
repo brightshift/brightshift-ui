@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { MailList } from "./dashboardSidebar/mail-list"
-import { MailSearch } from "./MailSearch"
+import { MailSearch } from "./mailSearch"
 
 interface Props extends React.ComponentProps<"div"> {
   setIsShowMailPreview: React.Dispatch<React.SetStateAction<boolean>>

@@ -11,7 +11,7 @@ interface Tag {
   text: string
 }
 
-export const MailSearch: React.FC = () => {
+export const SearchModal: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("")
   const [tags, setTags] = useState<Tag[]>([])
   const [isTagMode, setIsTagMode] = useState<boolean>(false)
@@ -51,7 +51,7 @@ export const MailSearch: React.FC = () => {
 
   return (
     <div>
-      <div className="relative flex items-center overflow-hidden rounded-lg ">
+      <div className="relative flex items-center overflow-hidden ">
         <div
           className={cn("flex flex-wrap items-center py-1 ", {
             "px-2": tags.length > 0,
@@ -85,45 +85,10 @@ export const MailSearch: React.FC = () => {
             value={searchValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="w-full  pl-8 "
+            className="w-full  rounded-none    border-border   pl-8 outline-none "
           />
         </div>
-
-        {/* <input
-          ref={inputRef}
-          type="text"
-          className={`grow px-4 py-2 outline-none ${isTagMode ? "bg-gray-100" : ""}`}
-          placeholder={
-            isTagMode
-              ? "Type tag and press Enter"
-              : "Search or type / to add tags"
-          }
-          value={searchValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-        /> */}
       </div>
     </div>
   )
 }
-
-// "use client"
-
-// import { useState } from "react"
-// import { Search } from "lucide-react"
-
-// import { Input } from "@/components/ui"
-
-// export function MailSearch() {
-//   const [searchValue, setSearchValue] = useState("")
-//   return (
-//     <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-//       <form>
-//         <div className="relative">
-//           <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
-//           <Input placeholder="Search" className="pl-8" />
-//         </div>
-//       </form>
-//     </div>
-//   )
-// }
