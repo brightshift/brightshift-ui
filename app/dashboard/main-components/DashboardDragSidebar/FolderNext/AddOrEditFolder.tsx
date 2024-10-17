@@ -25,7 +25,8 @@ interface Props {
 }
 
 export function AddOrEditFolder({ onSave, defaultValue, children }: Props) {
-  const [color, setColor] = useState(defaultValue?.color || "")
+  const randomColor = generateHexColor()
+  const [color, setColor] = useState(defaultValue?.color || randomColor)
   const [name, setName] = useState(defaultValue?.name || "")
   const [desc, setDesc] = useState(defaultValue?.desc || "")
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -78,7 +79,7 @@ export function AddOrEditFolder({ onSave, defaultValue, children }: Props) {
               id="color"
               value={color}
               onChange={setColor}
-              defaultValue={generateHexColor()}
+              defaultValue={randomColor}
             />
           </div>
         </div>

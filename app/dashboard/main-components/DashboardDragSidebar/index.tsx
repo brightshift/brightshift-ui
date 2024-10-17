@@ -7,7 +7,9 @@ import { cn } from "@/lib/utils"
 import { FolderMenu } from "./FolderNext"
 import { Nav } from "./Nav"
 
-export const DashboardDragSidebar = () => {
+interface Props extends React.ComponentPropsWithoutRef<"div"> {}
+
+export const DashboardDragSidebar = ({ className }: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -15,6 +17,7 @@ export const DashboardDragSidebar = () => {
     <div
       className={cn(
         "relative border-r border-gray-800/70 transition-all duration-300 ease-in-out",
+        className,
         isCollapsed ? "w-14" : "w-64"
       )}
     >

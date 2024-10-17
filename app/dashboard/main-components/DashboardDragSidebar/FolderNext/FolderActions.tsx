@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useFolderManager, useFolders } from "@/hooks"
+import { generateHexColor } from "@/utils"
 import { EllipsisVertical, PencilLine, Trash2 } from "lucide-react"
 
 import { Folders } from "@/types/dashboard"
@@ -27,8 +28,9 @@ interface Props {
 export const FolderActions = ({ item, ...props }: Props) => {
   const [setIsModalOpen, setSetIsModalOpen] = useState(false)
   const { deleteFolder } = useFolderManager()
+  const randomColor = generateHexColor()
 
-  const [color, setColor] = useState(item.color)
+  const [color, setColor] = useState(item.color || randomColor)
   const [name, setName] = useState(item.name)
   const [desc, setDesc] = useState(item.desc)
 

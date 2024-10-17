@@ -41,8 +41,8 @@ export const FolderMenu = ({
   }
 
   return (
-    <div className="relative" {...props}>
-      <div className="mx-2 flex items-center justify-between">
+    <div className="relative mx-auto w-[92%]" {...props}>
+      <div className="flex items-center justify-between">
         <div
           className={buttonVariants({
             variant: "ghost",

@@ -12,8 +12,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
       <DashboardNav />
       <div className="flex">
         <DashboardDragSidebar />
-
-        {children}
+        <div className="w-full overflow-x-hidden ">{children}</div>
       </div>
     </DashboardProvider>
   )
