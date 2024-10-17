@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useFolderManager, useFolders } from "@/hooks"
+import { generateHexColor } from "@/utils"
 import { Plus } from "lucide-react"
 
 import { Folders } from "@/types/dashboard"
@@ -73,7 +74,12 @@ export function AddOrEditFolder({ onSave, defaultValue, children }: Props) {
             <Label htmlFor="username" className="text-right">
               Color
             </Label>
-            <ColorPicker id="color" value={color} onChange={setColor} />
+            <ColorPicker
+              id="color"
+              value={color}
+              onChange={setColor}
+              defaultValue={generateHexColor()}
+            />
           </div>
         </div>
         <DialogFooter>

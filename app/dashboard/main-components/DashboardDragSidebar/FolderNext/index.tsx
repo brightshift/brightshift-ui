@@ -42,7 +42,7 @@ export const FolderMenu = ({
 
   return (
     <div className="relative" {...props}>
-      <div className="mx-1 flex items-center justify-between">
+      <div className="mx-2 flex items-center justify-between">
         <div
           className={buttonVariants({
             variant: "ghost",
@@ -73,10 +73,10 @@ export const FolderMenu = ({
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${!isCollapsed && isExpanded ? "max-h-96" : "max-h-0"}`}
       >
-        <div className="mr-1 mt-2  flex flex-col space-y-2 pl-2 text-start ">
+        <div className="ml-5 mr-1  mt-2  flex flex-col space-y-2 pl-2 text-start ">
           {folders.map((item, index) => (
             <div
-              className=" flex w-full items-center  rounded-md border border-input py-2 pl-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              className=" flex w-full items-center rounded-md   pl-2 text-sm font-medium ring-offset-background transition-colors  focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50"
               key={index}
             >
               <span

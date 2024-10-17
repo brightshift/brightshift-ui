@@ -27,14 +27,10 @@ export const DashboardDragSidebar = () => {
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
-        className="clip-path-[polygon(100%_41%,0_0,0_100%)] absolute -right-3 top-6  z-50 rotate-45 rounded-sm    bg-background p-1 shadow-md"
+        className=" absolute -right-3 top-6  z-50 -translate-x-px rotate-45    rounded-sm border-r border-t  border-border bg-background p-1 shadow-md"
         onClick={() => {
           setIsCollapsed(!isCollapsed)
           setIsExpanded(false)
-        }}
-        style={{
-          borderTop: `0.5px solid white`,
-          borderRight: `0.5px solid white`,
         }}
       >
         <AlignJustify className="size-3 -rotate-45 cursor-pointer" />
