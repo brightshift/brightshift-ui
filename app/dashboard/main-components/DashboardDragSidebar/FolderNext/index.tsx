@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from "react"
-import Link from "next/link"
+import React from "react"
 import { useRouter } from "next/navigation"
 import { useFolderManager, useFolders } from "@/hooks"
+import { AnimatePresence, motion } from "framer-motion"
 import { Folder, FolderOpen, Plus } from "lucide-react"
 
 import { Folders } from "@/types/dashboard"
@@ -70,34 +70,42 @@ export const FolderMenu = ({
           </AddOrEditFolder>
         </div>
       </div>
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${!isCollapsed && isExpanded ? "max-h-96" : "max-h-0"}`}
-      >
-        <div className="ml-5 mr-1  mt-2  flex flex-col space-y-2 pl-2 text-start ">
-          {folders.map((item, index) => (
-            <div
-              className=" flex w-full items-center rounded-md   pl-2 text-sm font-medium ring-offset-background transition-colors  focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50"
-              key={index}
-            >
-              <span
-                style={{ backgroundColor: item.color }}
-                onClick={() => router.push(`/dashboard/group/${item.id}`)}
-                className="mr-2 inline-block size-4 rounded-full border  "
-              ></span>
 
-              <div className="mr-1 flex flex-1 items-center justify-between">
+      <AnimatePresence>
+        <div
+          className={cn(
+            ` overflow-hidden transition-all duration-300 ease-in-out`,
+            !isCollapsed && isExpanded ? "max-h-96" : "max-h-0"
+          )}
+        >
+          <div className="ml-5 mr-1  mt-2  flex flex-col space-y-2 pl-2 text-start ">
+            {folders.map((item, index) => (
+              <motion.div
+                className=" flex w-full items-center rounded-md   pl-2 text-sm font-medium ring-offset-background transition-colors  focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50"
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
                 <span
+                  style={{ backgroundColor: item.color }}
                   onClick={() => router.push(`/dashboard/group/${item.id}`)}
-                  className="flex-1 cursor-pointer"
-                >
-                  {item.name}
-                </span>
-                <FolderActions item={item} />
-              </div>
-            </div>
-          ))}
+                  className="mr-2 inline-block size-4 rounded-full border  "
+                ></span>
+                <div className="mr-1 flex flex-1 items-center justify-between">
+                  <span
+                    onClick={() => router.push(`/dashboard/group/${item.id}`)}
+                    className="flex-1 cursor-pointer"
+                  >
+                    {item.name}
+                  </span>
+                  <FolderActions item={item} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      </AnimatePresence>
     </div>
   )
 }

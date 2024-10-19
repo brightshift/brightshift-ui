@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -117,29 +118,36 @@ export const SearchModal: React.FC = () => {
         placeholder="Type a message or use / for commands"
         className="w-full"
       />
-      {showCommands && (
-        <div
-          ref={commandsRef}
-          className="overflow absolute z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
-        >
-          {commands.map((command) => (
-            <Button
-              key={command}
-              onClick={() => selectCommand(command)}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              /{command}
-            </Button>
-          ))}
-        </div>
-      )}
-      <div className="mt-2 flex flex-wrap gap-2">
+
+      <AnimatePresence>
+        {showCommands && (
+          <motion.div
+            ref={commandsRef}
+            className="overflow absolute z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+          >
+            {commands.map((command) => (
+              <Button
+                key={command}
+                onClick={() => selectCommand(command)}
+                variant="ghost"
+                className="w-full justify-start"
+              >
+                /{command}
+              </Button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="mt-4 flex flex-wrap gap-2">
         {Object.entries(tags).flatMap(([command, values]) =>
           values.map((value: string, index: number) => (
             <span
               key={`${command}-${index}`}
-              className="flex items-center rounded bg-primary px-2 py-1 text-sm text-primary-foreground"
+              className="flex items-center rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground"
             >
               {value}
               <button

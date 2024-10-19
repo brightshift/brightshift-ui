@@ -1,4 +1,5 @@
 import React from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -29,21 +30,35 @@ export function Nav({ links, isCollapsed }: NavProps) {
           )}
         >
           <link.icon className={cn("size-4", isCollapsed ? "mr-0" : "mr-3")} />
-          {!isCollapsed && (
-            <span className="overflow-hidden whitespace-nowrap transition-all duration-200 ease-in-out">
-              {link.title}
-            </span>
-          )}
-          {!isCollapsed && link.label && (
-            <span
-              className={cn(
-                "ml-auto",
-                link.variant === "default" && "text-background dark:text-white"
-              )}
-            >
-              {link.label}
-            </span>
-          )}
+          <AnimatePresence>
+            {!isCollapsed && (
+              <motion.span
+                className="overflow-hidden whitespace-nowrap transition-all duration-200 ease-in-out"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {link.title}
+              </motion.span>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {!isCollapsed && link.label && (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={cn(
+                  "ml-auto",
+                  link.variant === "default" &&
+                    "text-background dark:text-white"
+                )}
+              >
+                {link.label}
+              </motion.span>
+            )}
+          </AnimatePresence>
         </a>
       ))}
     </nav>
