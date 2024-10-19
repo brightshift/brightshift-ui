@@ -30,7 +30,7 @@ export const DashboardDragSidebar = ({ className }: Props) => {
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
-        className=" absolute -right-3 top-6  z-50 -translate-x-px rotate-45    rounded-sm border-r border-t  border-border bg-background p-1 shadow-md"
+        className=" absolute -right-3 top-6  z-40 -translate-x-px rotate-45    rounded-sm border-r border-t  border-border bg-background p-1 shadow-md"
         onClick={() => {
           setIsCollapsed(!isCollapsed)
           setIsExpanded(false)
