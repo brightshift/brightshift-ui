@@ -4,14 +4,13 @@ import { Search } from "lucide-react"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui"
 
-import { SearchModal } from "./SearchModal"
+import { SearchModal } from "./MailSearchModal"
 
 interface Props extends React.ComponentProps<"div"> {}
 
@@ -24,8 +23,8 @@ export const MailSearch = ({ ...props }: Props) => {
             <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
             <Input
               placeholder={"Search or type / to add tags"}
-              className="w-full  rounded-none  border-none  pl-8 outline-none  focus:outline-none focus-visible:border-none focus-visible:outline-none focus-visible:ring-0"
-              // style={{ borderBottom: `1px solid #27272A` }}
+              className="w-full  rounded-none  border-none  border-border  pl-8      focus-visible:ring-0"
+              style={{ borderBottom: `1px solid #27272A` }}
             />
           </div>
         </DialogTrigger>
