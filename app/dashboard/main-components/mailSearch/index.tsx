@@ -24,7 +24,7 @@ export const MailSearch = ({ ...props }: Props) => {
             <Input
               placeholder={"Search or type / to add tags"}
               className="w-full  rounded-none  border-none  border-border  pl-8      focus-visible:ring-0"
-              style={{ borderBottom: `1px solid #27272A` }}
+              style={{ borderBottom: `1px solid var(--border)` }}
             />
           </div>
         </DialogTrigger>

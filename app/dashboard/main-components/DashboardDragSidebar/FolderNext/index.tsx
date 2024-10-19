@@ -41,7 +41,12 @@ export const FolderMenu = ({
   }
   const folderLength = folders.length
   return (
-    <div className="relative z-50 mx-auto w-[92%]" {...props}>
+    <div
+      className={cn("relative  mx-auto w-[92%]", {
+        "z-50": !isCollapsed,
+      })}
+      {...props}
+    >
       <div className="flex items-center justify-between">
         <div
           className={buttonVariants({
@@ -79,7 +84,6 @@ export const FolderMenu = ({
               ? `h-[calc(var(--folder-length)*var(--folder-child-height))]`
               : "h-0"
           )}
-          // style={{ "--child-height": "2rem" }}
           style={{ ["--folder-length"]: folderLength } as any}
         >
           {folders.map((item, index) => (

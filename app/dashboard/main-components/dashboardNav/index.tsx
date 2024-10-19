@@ -1,6 +1,7 @@
 import React from "react"
 
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/theme_toggle"
 import { Button } from "@/components/ui"
 
 import { MainNav } from "./main-nav"
@@ -37,7 +38,7 @@ export const DashboardNav = ({ ...props }: Props) => {
           <MainNav className="mx-6 hidden lg:flex" />
           <div className="flex items-center justify-end">
             <div className="ml-auto flex items-center space-x-2 sm:space-x-4">
-              {/* <Search /> */}
+              <ThemeToggle />
               <UserNav />
             </div>
 
