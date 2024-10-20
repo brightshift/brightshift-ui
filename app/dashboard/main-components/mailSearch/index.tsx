@@ -23,12 +23,12 @@ export const MailSearch = ({ ...props }: Props) => {
             <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
             <Input
               placeholder={"Search or type / to add tags"}
-              className="w-full  rounded-none  border-none  border-border  pl-8      focus-visible:ring-0"
+              className="w-full  rounded-none  border-none  border-border  pl-8 focus-visible:ring-0"
               style={{ borderBottom: `1px solid var(--border)` }}
             />
           </div>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className=" h-[90%]  border-none bg-transparent">
           <DialogHeader>
             <DialogTitle>Search</DialogTitle>
           </DialogHeader>

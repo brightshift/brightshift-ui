@@ -4,6 +4,7 @@ import "@/styles/globals.css"
 
 import { Metadata } from "next"
 import { ClerkProvider } from "@clerk/nextjs"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -34,6 +35,8 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
+const queryClient = new QueryClient()
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ClerkProvider
@@ -54,9 +57,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <div className="flex-1">{children}</div>
-            </div>
+            <QueryClientProvider client={queryClient}>
+              <div className="relative flex min-h-screen flex-col">
+                <div className="flex-1">{children}</div>
+              </div>
+            </QueryClientProvider>
             <TailwindIndicator />
           </ThemeProvider>
         </body>

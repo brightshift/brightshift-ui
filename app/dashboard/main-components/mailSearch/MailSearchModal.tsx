@@ -1,9 +1,12 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
+import { PopularSearches } from "@/data/search"
+import { useDebounce } from "@/hooks"
 import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -32,6 +35,8 @@ export const SearchModal: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const commandsRef = useRef<HTMLDivElement>(null)
 
+  const debounceValue = useDebounce(searchString, 500)
+
   const commands: CommandType[] = ["folder", "search", "query", "tags", "jobs"]
 
   useEffect(() => {
@@ -51,12 +56,12 @@ export const SearchModal: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (inputValue === "/") {
+    if (debounceValue === "/") {
       setShowCommands(true)
     } else {
       setShowCommands(false)
     }
-  }, [inputValue])
+  }, [debounceValue])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -109,7 +114,11 @@ export const SearchModal: React.FC = () => {
   }
 
   return (
-    <div className="relative w-full max-w-md">
+    <div
+      className={cn(
+        "fixed left-1/2 top-1/2 mt-10 size-full max-w-4xl -translate-x-1/2 -translate-y-1/2 p-4"
+      )}
+    >
       <Input
         ref={inputRef}
         value={inputValue}
@@ -119,11 +128,26 @@ export const SearchModal: React.FC = () => {
         className="w-full"
       />
 
+      <div className="overflow  z-10  mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
+        <p>Popular searches</p>
+
+        <div className="mt-2 flex w-full flex-wrap items-center gap-1">
+          {PopularSearches.map((search) => (
+            <p
+              key={search}
+              className="rounded-full bg-gray-900/70  px-2 py-1 text-xs"
+            >
+              {search}
+            </p>
+          ))}
+        </div>
+      </div>
+
       <AnimatePresence>
         {showCommands && (
           <motion.div
             ref={commandsRef}
-            className="overflow absolute z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
+            className="glassmorphism overflow  z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
