@@ -42,12 +42,79 @@ export const FolderMenu = ({
   const folderLength = folders.length
   return (
     <div
-      className={cn("relative  mx-auto w-[92%]", {
+      className={cn("relative  mx-auto ", {
         "z-50": !isCollapsed,
       })}
       {...props}
     >
-      <div className="flex items-center justify-between">
+      <div className="mt-2 flex flex-col gap-2 px-2">
+        <div
+          className={cn(
+            buttonVariants({ size: "sm" }),
+            "cursor-pointer justify-start dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white"
+          )}
+          // onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={toggleExpand}
+        >
+          {isExpanded ? (
+            <FolderOpen
+              className={cn(
+                "size-4",
+                isCollapsed ? "mr-0 inline-block " : "mr-3"
+              )}
+            />
+          ) : (
+            <Folder
+              className={cn(
+                "size-4",
+                isCollapsed ? "mr-0 inline-block " : "mr-3"
+              )}
+              onClick={(e) => {
+                // e.preventDefault()
+                e.stopPropagation()
+                setIsCollapsed(false)
+              }}
+            />
+          )}
+          <AnimatePresence>
+            {!isCollapsed && (
+              <motion.span
+                className="overflow-hidden whitespace-nowrap transition-all duration-200 ease-in-out"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                Group
+              </motion.span>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {!isCollapsed && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={cn(
+                  "ml-auto",
+                  // link.variant === "default" &&
+                  "text-background dark:text-white"
+                )}
+              >
+                <AddOrEditFolder onSave={newFolderHandler}>
+                  <Plus
+                    className={cn("size-4 cursor-pointer", {
+                      hidden: isCollapsed,
+                    })}
+                  />
+                </AddOrEditFolder>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* <div className="flex items-center justify-between">
         <div
           className={buttonVariants({
             variant: "ghost",
@@ -74,7 +141,7 @@ export const FolderMenu = ({
             />
           </AddOrEditFolder>
         </div>
-      </div>
+      </div> */}
 
       <AnimatePresence>
         <div

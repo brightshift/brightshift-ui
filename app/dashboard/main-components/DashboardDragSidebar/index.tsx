@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import { dashboardSidebarData } from "@/data"
-import { AlignJustify, GripVertical } from "lucide-react"
+import { AlignJustify } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
 
 import { FolderMenu } from "./FolderNext"
 import { Nav } from "./Nav"
@@ -27,6 +28,7 @@ export const DashboardDragSidebar = ({ className }: Props) => {
         isExpanded={isExpanded}
         setIsExpanded={setIsExpanded}
       />
+
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button

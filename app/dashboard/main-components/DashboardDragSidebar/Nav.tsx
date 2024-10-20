@@ -17,7 +17,7 @@ interface NavProps {
 
 export function Nav({ links, isCollapsed }: NavProps) {
   return (
-    <nav className="flex flex-col gap-2 p-2">
+    <nav className="flex flex-col gap-2 px-2">
       {links.map((link, index) => (
         <a
           key={index}

@@ -146,7 +146,8 @@ export const SearchModal: React.FC = () => {
       {PopularSearches.map((search) => (
         <p
           key={search}
-          className="rounded-full bg-gray-900/70  px-2 py-1 text-xs"
+          onClick={() => setInputValue(search)}
+          className="cursor-pointer rounded-full  bg-gray-900/70 px-2 py-1 text-xs"
         >
           {search}
         </p>
@@ -185,6 +186,11 @@ export const SearchModal: React.FC = () => {
       )}
     </div>
   )
+
+  const allSelectedTags = Object.entries(tags).flatMap(
+    ([command, values]) => values
+  )
+
   return (
     <div
       className={cn(
@@ -208,7 +214,7 @@ export const SearchModal: React.FC = () => {
             <div className="overflow  z-10  mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
               {debounceValue
                 ? searchResult
-                : Object.entries(tags).length > 0
+                : allSelectedTags.length > 0
                   ? showSelectedTagsResult
                   : defaultPopularSearch}
             </div>
