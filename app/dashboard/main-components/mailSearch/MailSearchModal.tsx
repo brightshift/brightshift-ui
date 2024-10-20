@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { PopularSearches } from "@/data/search"
+import { jobsList, PopularSearches } from "@/data/search"
 import { useDebounce } from "@/hooks"
 import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
@@ -32,11 +32,10 @@ export const SearchModal: React.FC = () => {
     jobs: [],
   })
   const [searchString, setSearchString] = useState("")
+  const [searchedJobs, setSearchedJobs] = useState<typeof jobsList>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const commandsRef = useRef<HTMLDivElement>(null)
-
   const debounceValue = useDebounce(searchString, 500)
-
   const commands: CommandType[] = ["folder", "search", "query", "tags", "jobs"]
 
   useEffect(() => {
@@ -60,6 +59,11 @@ export const SearchModal: React.FC = () => {
       setShowCommands(true)
     } else {
       setShowCommands(false)
+
+      const filterJob = jobsList.filter((job) =>
+        job.title.toLowerCase().includes(debounceValue.toLowerCase())
+      )
+      setSearchedJobs(filterJob)
     }
   }, [debounceValue])
 
@@ -113,6 +117,74 @@ export const SearchModal: React.FC = () => {
     }))
   }
 
+  //  reparable  JSX
+
+  const showCommandList = (
+    <AnimatePresence>
+      <motion.div
+        ref={commandsRef}
+        className="glassmorphism  overflow absolute  z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+      >
+        {commands.map((command) => (
+          <Button
+            key={command}
+            onClick={() => selectCommand(command)}
+            variant="ghost"
+            className="w-full justify-start"
+          >
+            /{command}
+          </Button>
+        ))}
+      </motion.div>
+    </AnimatePresence>
+  )
+  const defaultPopularSearch = (
+    <div className=" flex w-full flex-wrap items-center gap-1">
+      {PopularSearches.map((search) => (
+        <p
+          key={search}
+          className="rounded-full bg-gray-900/70  px-2 py-1 text-xs"
+        >
+          {search}
+        </p>
+      ))}
+    </div>
+  )
+  const searchResult = (
+    <div>
+      {searchedJobs.map((job) => (
+        <div
+          key={job.id}
+          className="rounded-lg bg-gray-900/70  p-2 text-xs text-white"
+        >
+          {job.title}
+        </div>
+      ))}
+    </div>
+  )
+  const showSelectedTagsResult = (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {Object.entries(tags).flatMap(([command, values]) =>
+        values.map((value: string, index: number) => (
+          <span
+            key={`${command}-${index}`}
+            className="flex items-center rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground"
+          >
+            {value}
+            <button
+              onClick={() => removeTag(command as CommandType, index)}
+              className="ml-1 focus:outline-none"
+            >
+              <X size={14} />
+            </button>
+          </span>
+        ))
+      )}
+    </div>
+  )
   return (
     <div
       className={cn(
@@ -128,62 +200,21 @@ export const SearchModal: React.FC = () => {
         className="w-full"
       />
 
-      <div className="overflow  z-10  mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
-        <p>Popular searches</p>
-
-        <div className="mt-2 flex w-full flex-wrap items-center gap-1">
-          {PopularSearches.map((search) => (
-            <p
-              key={search}
-              className="rounded-full bg-gray-900/70  px-2 py-1 text-xs"
-            >
-              {search}
-            </p>
-          ))}
+      <>
+        <div className="mt-2">
+          {showCommands ? (
+            showCommandList
+          ) : (
+            <div className="overflow  z-10  mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
+              {debounceValue
+                ? searchResult
+                : Object.entries(tags).length > 0
+                  ? showSelectedTagsResult
+                  : defaultPopularSearch}
+            </div>
+          )}
         </div>
-      </div>
-
-      <AnimatePresence>
-        {showCommands && (
-          <motion.div
-            ref={commandsRef}
-            className="glassmorphism overflow  z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-          >
-            {commands.map((command) => (
-              <Button
-                key={command}
-                onClick={() => selectCommand(command)}
-                variant="ghost"
-                className="w-full justify-start"
-              >
-                /{command}
-              </Button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {Object.entries(tags).flatMap(([command, values]) =>
-          values.map((value: string, index: number) => (
-            <span
-              key={`${command}-${index}`}
-              className="flex items-center rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground"
-            >
-              {value}
-              <button
-                onClick={() => removeTag(command as CommandType, index)}
-                className="ml-1 focus:outline-none"
-              >
-                <X size={14} />
-              </button>
-            </span>
-          ))
-        )}
-      </div>
+      </>
     </div>
   )
 }

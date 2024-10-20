@@ -28,10 +28,11 @@ export const MailSearch = ({ ...props }: Props) => {
             />
           </div>
         </DialogTrigger>
-        <DialogContent className=" h-[90%]  border-none bg-transparent">
+        <DialogContent className=" h-[90%]  border-none bg-transparent  outline-none">
           <DialogHeader>
             <DialogTitle>Search</DialogTitle>
           </DialogHeader>
+
           <SearchModal />
         </DialogContent>
       </Dialog>
