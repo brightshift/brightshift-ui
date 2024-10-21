@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { dashboardSidebarData } from "@/data"
-import { AlignJustify } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -31,13 +31,17 @@ export const DashboardDragSidebar = ({ className }: Props) => {
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
-        className=" absolute -right-3 top-6  z-50     rounded-sm border-r border-t  border-border bg-background p-1 shadow-md "
+        className=" absolute -right-3 top-6  z-50 rounded-full border-r border-t  border-border bg-background p-1 shadow-md "
         onClick={() => {
           setIsCollapsed(!isCollapsed)
           setIsExpanded(false)
         }}
       >
-        <AlignJustify className="size-3  cursor-pointer" />
+        <ChevronRight
+          className={cn("size-3  cursor-pointer", {
+            "rotate-180": !isCollapsed,
+          })}
+        />
       </button>
     </div>
   )

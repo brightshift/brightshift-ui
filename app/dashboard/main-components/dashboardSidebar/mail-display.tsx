@@ -9,7 +9,6 @@ import {
   ArchiveX,
   CircleArrowLeft,
   CircleX,
-  FoldHorizontal,
   Maximize,
   MoreVertical,
   Trash2,

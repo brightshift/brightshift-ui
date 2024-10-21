@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -181,23 +182,23 @@ export const SearchModal: React.FC = () => {
     </div>
   )
   const showSelectedTagsResult = (
-    <div className="mt-4 flex flex-wrap gap-2">
-      {Object.entries(tags).flatMap(([command, values]) =>
-        values.map((value: string, index: number) => (
-          <span
-            key={`${command}-${index}`}
-            className="flex items-center rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground"
-          >
-            {value}
-            <button
-              onClick={() => removeTag(command as CommandType, index)}
-              className="ml-1 focus:outline-none"
-            >
-              <X size={14} />
-            </button>
-          </span>
-        ))
-      )}
+    <div className=" space-y-2">
+      {Object.entries(tags).map((tagList: [string, string[]]) => {
+        if (tagList[1].length === 0) return null
+        return (
+          <div className="flex items-center gap-x-2 rounded-lg border border-border px-2 py-1">
+            <p>{tagList[0]}</p> :
+            {tagList[1].map((tag: string) => (
+              <Badge
+                key={tag}
+                //  variant={getBadgeVariantFromLabel(label)}
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )
+      })}
     </div>
   )
 
@@ -205,6 +206,8 @@ export const SearchModal: React.FC = () => {
     ([command, values]) => values
   )
 
+  const tagList = Object.entries(tags).map((tag) => tag)
+  console.log("🚀 ~ tagList:", tagList)
   return (
     <div
       className={cn(
