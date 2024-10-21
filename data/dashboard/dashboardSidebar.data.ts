@@ -24,7 +24,7 @@ export const dashboardSidebarData: DashboardSidebarDataType[] = [
     title: "Inbox",
     label: "128",
     icon: Inbox,
-    variant: "default",
+    variant: "ghost",
   },
   {
     title: "Drafts",

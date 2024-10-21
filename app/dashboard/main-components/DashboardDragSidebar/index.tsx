@@ -3,7 +3,6 @@ import { dashboardSidebarData } from "@/data"
 import { AlignJustify } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
 
 import { FolderMenu } from "./FolderNext"
 import { Nav } from "./Nav"
@@ -32,13 +31,13 @@ export const DashboardDragSidebar = ({ className }: Props) => {
       <Nav isCollapsed={isCollapsed} links={dashboardSidebarData} />
 
       <button
-        className=" absolute -right-3 top-6  z-40 -translate-x-px rotate-45    rounded-sm border-r border-t  border-border bg-background p-1 shadow-md "
+        className=" absolute -right-3 top-6  z-50     rounded-sm border-r border-t  border-border bg-background p-1 shadow-md "
         onClick={() => {
           setIsCollapsed(!isCollapsed)
           setIsExpanded(false)
         }}
       >
-        <AlignJustify className="size-3 -rotate-45 cursor-pointer" />
+        <AlignJustify className="size-3  cursor-pointer" />
       </button>
     </div>
   )

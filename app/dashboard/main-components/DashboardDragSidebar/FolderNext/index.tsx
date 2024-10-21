@@ -1,16 +1,23 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useFolderManager, useFolders } from "@/hooks"
+import { generateHexColor } from "@/utils"
 import { AnimatePresence, motion } from "framer-motion"
 import { Folder, FolderOpen, Plus } from "lucide-react"
 
-import { Folders } from "@/types/dashboard"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { ColorPicker } from "@/components/color-picker"
+import { Button, buttonVariants, Input, Label } from "@/components/ui"
 
-import { AddOrEditFolder } from "./AddOrEditFolder"
 import { FolderActions } from "./FolderActions"
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {
@@ -31,30 +38,30 @@ export const FolderMenu = ({
   ...props
 }: Props) => {
   const { folders } = useFolders()
-  const { addFolders } = useFolderManager()
   const router = useRouter()
+  const randomColor = generateHexColor()
 
-  const toggleExpand = () => setIsExpanded(!isExpanded)
+  const [color, setColor] = useState(randomColor)
+  const [name, setName] = useState("")
+  const [desc, setDesc] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const newFolderHandler = (obg: Folders) => {
-    return addFolders(obg)
+  const submitHandler = () => {
+    setIsModalOpen(false)
   }
   const folderLength = folders.length
   return (
-    <div
-      className={cn("relative  mx-auto ", {
-        "z-50": !isCollapsed,
-      })}
-      {...props}
-    >
+    <div className={cn("relative  z-50 mx-auto")} {...props}>
       <div className="mt-2 flex flex-col gap-2 px-2">
         <div
           className={cn(
             buttonVariants({ size: "sm" }),
             "cursor-pointer justify-start dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white"
           )}
-          // onClick={() => setIsCollapsed(!isCollapsed)}
-          onClick={toggleExpand}
+          onClick={() => {
+            setIsCollapsed(false)
+            setIsExpanded(!isExpanded)
+          }}
         >
           {isExpanded ? (
             <FolderOpen
@@ -70,7 +77,7 @@ export const FolderMenu = ({
                 isCollapsed ? "mr-0 inline-block " : "mr-3"
               )}
               onClick={(e) => {
-                // e.preventDefault()
+                e.preventDefault()
                 e.stopPropagation()
                 setIsCollapsed(false)
               }}
@@ -95,23 +102,69 @@ export const FolderMenu = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className={cn(
-                  "ml-auto",
-                  // link.variant === "default" &&
-                  "text-background dark:text-white"
-                )}
+                className={cn("ml-auto text-background dark:text-white")}
               >
-                <AddOrEditFolder onSave={newFolderHandler}>
-                  <Plus
-                    className={cn("size-4 cursor-pointer", {
-                      hidden: isCollapsed,
-                    })}
-                  />
-                </AddOrEditFolder>
+                <Plus
+                  className={cn("size-4 cursor-pointer", {
+                    hidden: isCollapsed,
+                  })}
+                  onClick={() => setIsModalOpen(true)}
+                />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
+
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="sm:max-w-[425px]" onSubmit={submitHandler}>
+            <DialogHeader>
+              <DialogTitle>Add New Group</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input
+                  id="name"
+                  defaultValue="Pedro Duarte"
+                  className="col-span-3"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Description
+                </Label>
+                <Input
+                  id="username"
+                  defaultValue="@peduarte"
+                  className="col-span-3"
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
+                />
+              </div>
+
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Color
+                </Label>
+                <ColorPicker
+                  id="color"
+                  value={color}
+                  onChange={setColor}
+                  defaultValue={randomColor}
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="submit" onClick={submitHandler}>
+                Save
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* <div className="flex items-center justify-between">

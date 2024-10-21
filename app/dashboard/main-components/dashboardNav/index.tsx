@@ -13,7 +13,7 @@ interface Props extends React.ComponentProps<"div"> {}
 
 export const DashboardNav = ({ ...props }: Props) => {
   return (
-    <div {...props}>
+    <div {...props} id="dashboardNav">
       <div className="border-b">
         <div className="flex h-16 items-center justify-between px-4">
           <Button

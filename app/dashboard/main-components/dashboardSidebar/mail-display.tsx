@@ -1,12 +1,15 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Mail } from "@/data/dashboard/dashboard.data"
 import { format } from "date-fns"
 import {
   Archive,
   ArchiveX,
+  CircleArrowLeft,
   CircleX,
+  FoldHorizontal,
   Maximize,
   MoreVertical,
   Trash2,
@@ -41,6 +44,7 @@ export function MailDisplay({
   setIsShowMailPreview,
   showActionBtn = true,
 }: MailDisplayProps) {
+  const router = useRouter()
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center p-2">
@@ -117,17 +121,23 @@ export function MailDisplay({
         </DropdownMenu>
         <Separator orientation="vertical" className="mr-2 h-6" />
 
-        {showActionBtn && (
-          <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
+        <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
+          {showActionBtn ? (
             <Link href={`/dashboard/${mail?.id}`}>
               <Maximize className="size-5" />
             </Link>
+          ) : (
+            <button onClick={() => router.back()}>
+              <CircleArrowLeft />
+            </button>
+          )}
+          {showActionBtn && (
             <CircleX
               className="size-5 cursor-pointer"
               onClick={() => setIsShowMailPreview?.(false)}
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {mail ? (
