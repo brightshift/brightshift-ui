@@ -80,9 +80,22 @@ export const SearchModal: React.FC = () => {
     }
   }
 
+  const removeTag = (command: CommandType, index: number) => {
+    setTags((prev) => ({
+      ...prev,
+      [command]: prev[command].filter((_, i) => i !== index),
+    }))
+  }
+
+  //  reparable  JSX
+
+  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (activeCommand) {
+      if (showCommands && highlightedIndex !== null) {
+        selectCommand(commands[highlightedIndex])
+      } else if (activeCommand) {
         const commandValue = inputValue.slice(activeCommand.length + 2) // +2 for '/' and space
         if (commandValue) {
           setTags((prev) => ({
@@ -100,6 +113,14 @@ export const SearchModal: React.FC = () => {
       }
     } else if (e.key === "/" && inputValue === "") {
       setShowCommands(true)
+    } else if (e.key === "ArrowDown" && showCommands) {
+      setHighlightedIndex((prev) =>
+        prev === null ? 0 : Math.min(prev + 1, commands.length - 1)
+      )
+    } else if (e.key === "ArrowUp" && showCommands) {
+      setHighlightedIndex((prev) =>
+        prev === null ? commands.length - 1 : Math.max(prev - 1, 0)
+      )
     }
   }
 
@@ -108,32 +129,25 @@ export const SearchModal: React.FC = () => {
     setInputValue(`/${command} `)
     setShowCommands(false)
     inputRef.current?.focus()
+    setHighlightedIndex(null)
   }
 
-  const removeTag = (command: CommandType, index: number) => {
-    setTags((prev) => ({
-      ...prev,
-      [command]: prev[command].filter((_, i) => i !== index),
-    }))
-  }
-
-  //  reparable  JSX
-
+  // Inside the component rendering logic
   const showCommandList = (
     <AnimatePresence>
       <motion.div
         ref={commandsRef}
-        className="glassmorphism  overflow absolute  z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
+        className="glassmorphism overflow absolute z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
       >
-        {commands.map((command) => (
+        {commands.map((command, index) => (
           <Button
             key={command}
             onClick={() => selectCommand(command)}
             variant="ghost"
-            className="w-full justify-start"
+            className={`w-full justify-start ${highlightedIndex === index ? "bg-accent" : ""}`}
           >
             /{command}
           </Button>

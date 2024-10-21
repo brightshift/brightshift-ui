@@ -30,7 +30,7 @@ export function ManageFolderFromCards({ MailData }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Button variant="outline" className="border-none p-0 outline-none">
-          <EllipsisVertical />
+          <EllipsisVertical className="size-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">

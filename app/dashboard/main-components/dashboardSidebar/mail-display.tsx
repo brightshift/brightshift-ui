@@ -124,11 +124,11 @@ export function MailDisplay({
         <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
           {showActionBtn ? (
             <Link href={`/dashboard/${mail?.id}`}>
-              <Maximize className="size-5" />
+              <Maximize className="size-4" />
             </Link>
           ) : (
             <button onClick={() => router.back()}>
-              <CircleArrowLeft />
+              <CircleArrowLeft className="size-4" />
             </button>
           )}
           {showActionBtn && (
