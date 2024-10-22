@@ -36,11 +36,14 @@ export const DashboardDragSidebar = ({ className }: Props) => {
           setIsCollapsed(!isCollapsed)
           setIsExpanded(false)
         }}
+        aria-labelledby="submitButtonLabel"
       >
         <ChevronRight
           className={cn("size-3  cursor-pointer", {
-            "rotate-180": !isCollapsed,
+            "rotate-180 visually-hidden": !isCollapsed,
           })}
+          id="submitButtonLabel"
+          aria-label="Toggle menu"
         />
       </button>
     </div>

@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
 
@@ -19,9 +20,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
   return (
     <nav className="flex flex-col gap-2 px-2">
       {links.map((link, index) => (
-        <a
+        <Link
           key={index}
-          href="#"
+          href="/dashboard"
+          aria-label={`Go to ${link.title}`}
           className={cn(
             buttonVariants({ variant: link.variant, size: "sm" }),
             link.variant === "default" &&
@@ -59,7 +61,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
               </motion.span>
             )}
           </AnimatePresence>
-        </a>
+        </Link>
       ))}
     </nav>
   )

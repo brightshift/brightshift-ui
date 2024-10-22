@@ -106,8 +106,13 @@ export function MailDisplay({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" disabled={!mail}>
-              <MoreVertical className="size-4" />
+            <Button
+              variant="ghost"
+              size="icon"
+              disabled={!mail}
+              aria-label="More"
+            >
+              <MoreVertical className="visually-hidden size-4" />
               <span className="sr-only">More</span>
             </Button>
           </DropdownMenuTrigger>
@@ -122,18 +127,22 @@ export function MailDisplay({
 
         <div className="mx-2 hidden items-center justify-center gap-x-2 md:flex">
           {showActionBtn ? (
-            <Link href={`/dashboard/${mail?.id}`}>
-              <Maximize className="size-4" />
+            <Link href={`/dashboard/${mail?.id}`} aria-label="Expand">
+              <Maximize className="size-4" aria-label="Expand Icon" />
             </Link>
           ) : (
-            <button onClick={() => router.back()}>
-              <CircleArrowLeft className="size-4" />
+            <button
+              onClick={() => router.back()}
+              aria-label="Go Back to previous page"
+            >
+              <CircleArrowLeft className="size-4" aria-label="Go Back" />
             </button>
           )}
           {showActionBtn && (
             <CircleX
               className="size-5 cursor-pointer"
               onClick={() => setIsShowMailPreview?.(false)}
+              aria-label="Close"
             />
           )}
         </div>
