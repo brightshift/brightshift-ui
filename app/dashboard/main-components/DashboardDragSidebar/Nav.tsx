@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
