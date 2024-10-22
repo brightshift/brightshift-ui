@@ -182,18 +182,16 @@ export const SearchModal: React.FC = () => {
     </div>
   )
   const showSelectedTagsResult = (
-    <div className=" space-y-2">
+    <div className=" flex flex-wrap gap-2">
       {Object.entries(tags).map((tagList: [string, string[]]) => {
         if (tagList[1].length === 0) return null
         return (
-          <div className="flex items-center gap-x-2 rounded-lg border border-border px-2 py-1">
-            <p>{tagList[0]}</p> :
+          <div className="inline-flex items-center gap-x-2 rounded-lg  px-2 py-1">
+            <p className="text-sm font-bold">{tagList[0]}</p> :
             {tagList[1].map((tag: string) => (
-              <Badge
-                key={tag}
-                //  variant={getBadgeVariantFromLabel(label)}
-              >
-                {tag}
+              <Badge key={tag} className="flex items-center gap-1">
+                <p className="text-xs">{tag}</p>
+                <X className="size-3" />
               </Badge>
             ))}
           </div>
@@ -206,8 +204,6 @@ export const SearchModal: React.FC = () => {
     ([command, values]) => values
   )
 
-  const tagList = Object.entries(tags).map((tag) => tag)
-  console.log("🚀 ~ tagList:", tagList)
   return (
     <div
       className={cn(

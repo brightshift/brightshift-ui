@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import React, { PropsWithChildren, useEffect, useState } from "react"
-import { mails } from "@/data"
-import { useFolders, useMail, useMediaQuery } from "@/hooks"
-import cookies from "js-cookie"
+import React, { useEffect, useState } from "react"
+import { mails } from "@/data";
+import { useFolders, useMail, useMediaQuery } from "@/hooks";
+import cookies from "js-cookie";
 
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
-import { TooltipProvider } from "@/components/ui/tooltip"
 
-import { MailDisplay } from "./main-components"
-import { EmailList } from "./main-components/EmailList"
+
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
+
+
+import { MailDisplay } from "./main-components";
+import { EmailList } from "./main-components/EmailList";
+
 
 const DashboardLayout = () => {
   const [mail, setMail] = useMail()
