@@ -1,5 +1,4 @@
 export const mainNavItems = [
-  { name: "home", href: "/dashboard" },
   { name: "Dashboard", href: "/dashboard/dashboard" },
   { name: "Cards", href: "/dashboard/cards" },
   { name: "Task", href: "/dashboard/task" },
@@ -7,4 +6,5 @@ export const mainNavItems = [
   { name: "forms", href: "/dashboard/forms" },
   { name: "music", href: "/dashboard/music" },
   { name: "authentication", href: "/dashboard/authentication" },
+  { name: "Search Query", href: "/dashboard/search-query" },
 ]
