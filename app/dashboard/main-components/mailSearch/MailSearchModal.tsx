@@ -217,6 +217,7 @@ export const SearchModal: React.FC = () => {
         onKeyDown={handleKeyDown}
         placeholder="Type a message or use / for commands"
         className="w-full"
+        isBorderLessEffect
       />
 
       <>

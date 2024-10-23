@@ -23,7 +23,7 @@ export const MailSearch = ({ ...props }: Props) => {
             <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
             <Input
               placeholder={"Search or type / to add tags"}
-              className="w-full rounded-none  border-none  pl-8 focus-visible:ring-0"
+              className="input-smooth-glow w-full rounded-none  border-none  pl-8 focus-visible:ring-0"
             />
           </div>
         </DialogTrigger>

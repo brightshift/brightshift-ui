@@ -204,6 +204,9 @@
   .onboarding-right {
     @apply md:w-[20rem] xl:w-[30rem]  2xl:w-[35rem]  xl:min-h-72  2xl:min-h-96  md:min-h-52 w-full h-full bg-slate-500 min-h-80 rounded-lg;
   }
+  .input-smooth-glow {
+    @apply border border-input ring-offset-transparent   focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0;
+  }
 }
 
 .glow-effect {
@@ -211,7 +214,7 @@
     0 0 5px rgb(239 68 68),
     0 0 10px rgb(239 68 68),
     0 0 20px rgb(239 68 68);
-}
+} 
 
 .glowing-icon {
   color: #ff4d4d; /* Color of the mail icon */

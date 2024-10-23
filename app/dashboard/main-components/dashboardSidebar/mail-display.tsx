@@ -9,11 +9,13 @@ import {
   ArchiveX,
   CircleArrowLeft,
   CircleX,
+  Expand,
   Maximize,
   MoreVertical,
   Trash2,
 } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -135,7 +137,7 @@ export function MailDisplay({
               onClick={() => router.back()}
               aria-label="Go Back to previous page"
             >
-              <CircleArrowLeft className="size-4" aria-label="Go Back" />
+              <Expand className="size-4" aria-label="Go Back" />
             </button>
           )}
           {showActionBtn && (
@@ -184,8 +186,9 @@ export function MailDisplay({
             <form>
               <div className="grid gap-4">
                 <Textarea
-                  className="p-4"
+                  className={cn("input-smooth-glow p-4 ")}
                   placeholder={`Reply ${mail.name}...`}
+                  isBorderLessEffect
                 />
                 <div className="flex items-center">
                   <Label
