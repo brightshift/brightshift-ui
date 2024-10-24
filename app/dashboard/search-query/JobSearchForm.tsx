@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
 import { Save, Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -25,8 +26,9 @@ export default function JobSearchForm() {
           showAdvanced={showAdvanced}
           onToggleAdvanced={() => setShowAdvanced(!showAdvanced)}
         />
-
-        {showAdvanced && <AdvancedSearchFields />}
+        <AnimatePresence>
+          {showAdvanced && <AdvancedSearchFields />}
+        </AnimatePresence>
 
         <div className="flex justify-between pt-4">
           <Button className="flex items-center gap-2">
