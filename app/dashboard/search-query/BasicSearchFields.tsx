@@ -21,6 +21,7 @@ export function BasicSearchFields({
           id="queryName"
           placeholder="E.g., Senior React Developer NYC"
           className="mt-1"
+          isBorderLessEffect
         />
       </div>
 
@@ -30,6 +31,7 @@ export function BasicSearchFields({
           id="keywords"
           placeholder="Enter job title, skills, or keywords"
           className="mt-1"
+          isBorderLessEffect
         />
       </div>
 

@@ -17,7 +17,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           !isBorderLessEffect
             ? "border border-input ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             : // Effect
-              " border border-transparent  ring-offset-transparent hover:border hover:border-input/40   focus-visible:border-input focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0",
+              " border border-input/30     ring-offset-transparent  hover:border-input/60   focus:border-input   focus-visible:border-input focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0",
           className
         )}
         ref={ref}

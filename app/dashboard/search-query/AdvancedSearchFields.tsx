@@ -1,5 +1,8 @@
 "use client"
 
+import { useState } from "react"
+
+import { TagInput } from "@/components/ui/custom"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -13,6 +16,9 @@ import { Slider } from "@/components/ui/slider"
 import { Textarea } from "@/components/ui/textarea"
 
 export function AdvancedSearchFields() {
+  const [tags, setTags] = useState<string[]>([])
+  const [error, setError] = useState<string | null>(null)
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-6">
@@ -22,6 +28,7 @@ export function AdvancedSearchFields() {
             id="location"
             placeholder="City, State, or Remote"
             className="mt-1"
+            isBorderLessEffect
           />
         </div>
 
@@ -69,11 +76,20 @@ export function AdvancedSearchFields() {
       </div>
 
       <div>
-        <Label htmlFor="exclude">Exclude Keywords</Label>
-        <Input
-          id="exclude"
-          placeholder="Keywords to exclude from search"
-          className="mt-1"
+        <label className="mb-2 block text-lg font-semibold text-primary">
+          Exclude Keywords
+        </label>
+        <p className="mb-3 text-sm text-primary/70">
+          Enter search terms you feel your buyers will use when looking for your
+          service
+        </p>
+
+        <TagInput
+          maxTags={5}
+          tags={tags}
+          setTags={setTags}
+          error={error}
+          setError={setError}
         />
       </div>
 
