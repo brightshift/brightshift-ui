@@ -56,7 +56,7 @@ export const SearchModal: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (debounceValue === "/") {
+    if (debounceValue.startsWith("/")) {
       setShowCommands(true)
     } else {
       setShowCommands(false)
@@ -72,11 +72,11 @@ export const SearchModal: React.FC = () => {
     const value = e.target.value
     setInputValue(value)
 
-    if (value.startsWith("/") && !activeCommand) {
+    // Only show commands when '/' is typed without any trailing space
+    if (value === "/" || (value.startsWith("/") && !value.includes(" "))) {
       setShowCommands(true)
-    } else if (activeCommand) {
-      // Do nothing, wait for Enter key
     } else {
+      setShowCommands(false)
       setSearchString(value)
     }
   }
@@ -87,8 +87,6 @@ export const SearchModal: React.FC = () => {
       [command]: prev[command].filter((_, i) => i !== index),
     }))
   }
-
-  //  reparable  JSX
 
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
 
@@ -112,8 +110,6 @@ export const SearchModal: React.FC = () => {
         setSearchString("")
         setInputValue("")
       }
-    } else if (e.key === "/" && inputValue === "") {
-      setShowCommands(true)
     } else if (e.key === "ArrowDown" && showCommands) {
       setHighlightedIndex((prev) =>
         prev === null ? 0 : Math.min(prev + 1, commands.length - 1)
@@ -133,60 +129,76 @@ export const SearchModal: React.FC = () => {
     setHighlightedIndex(null)
   }
 
-  // Inside the component rendering logic
+  // Filter commands based on input after '/'
+  const filteredCommands = commands.filter((command) =>
+    command.startsWith(inputValue.slice(1).toLowerCase())
+  )
+
   const showCommandList = (
     <AnimatePresence>
       <motion.div
         ref={commandsRef}
-        className="glassmorphism overflow absolute z-10 mt-1 w-full rounded-md border border-border bg-background shadow-lg"
+        className="glassmorphism overflow absolute z-10 w-full space-y-2 rounded-md border border-border bg-background p-2 shadow-lg"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
       >
-        {commands.map((command, index) => (
-          <Button
-            key={command}
-            onClick={() => selectCommand(command)}
-            variant="ghost"
-            className={`w-full justify-start ${highlightedIndex === index ? "bg-accent" : ""}`}
-          >
-            /{command}
-          </Button>
-        ))}
+        {filteredCommands.length > 0 ? (
+          filteredCommands.map((command, index) => (
+            <Button
+              key={command}
+              onClick={() => selectCommand(command)}
+              variant="ghost"
+              className={`h-9 w-full justify-start py-1 ${
+                highlightedIndex === index ? "bg-accent" : ""
+              }`}
+            >
+              /{command}
+            </Button>
+          ))
+        ) : (
+          <p className="text-sm">No matching commands</p>
+        )}
       </motion.div>
     </AnimatePresence>
   )
+
   const defaultPopularSearch = (
-    <div className=" flex w-full flex-wrap items-center gap-1">
-      {PopularSearches.map((search) => (
-        <p
-          key={search}
-          onClick={() => setInputValue(search)}
-          className="cursor-pointer rounded-full  bg-gray-900/70 px-2 py-1 text-xs"
-        >
-          {search}
-        </p>
-      ))}
+    <div className="space-y-2">
+      <p className="font-semibold text-primary">Most Popular Search</p>
+      <div className="flex w-full flex-wrap items-center gap-1">
+        {PopularSearches.map((search) => (
+          <p
+            key={search}
+            onClick={() => setInputValue(search)}
+            className="cursor-pointer rounded-full bg-gray-900/70 px-2 py-1 text-xs"
+          >
+            {search}
+          </p>
+        ))}
+      </div>
     </div>
   )
+
   const searchResult = (
     <div>
       {searchedJobs.map((job) => (
         <div
           key={job.id}
-          className="rounded-lg bg-gray-900/70  p-2 text-xs text-white"
+          className="rounded-lg bg-gray-900/70 p-2 text-xs text-white"
         >
           {job.title}
         </div>
       ))}
     </div>
   )
+
   const showSelectedTagsResult = (
-    <div className=" flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2">
       {Object.entries(tags).map((tagList: [string, string[]]) => {
         if (tagList[1].length === 0) return null
         return (
-          <div className="inline-flex items-center gap-x-2 rounded-lg  px-2 py-1">
+          <div className="inline-flex items-center gap-x-2 rounded-lg px-2 py-1">
             <p className="text-sm font-bold">{tagList[0]}</p> :
             {tagList[1].map((tag: string) => (
               <Badge key={tag} className="flex items-center gap-1">
@@ -225,7 +237,7 @@ export const SearchModal: React.FC = () => {
           {showCommands ? (
             showCommandList
           ) : (
-            <div className="overflow  z-10  mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
+            <div className="overflow z-10 mt-5 min-h-72 w-full rounded-md border border-border bg-background p-4 shadow-lg">
               {debounceValue
                 ? searchResult
                 : allSelectedTags.length > 0
